@@ -1,0 +1,39 @@
+.single {
+    &.single-location {
+        .sts-banner {
+            background-position: center center;
+
+            .container {
+                display: flex;
+                height: 100%;
+            }
+
+            @at-root body#{&} {
+                h1 {
+                    position: static;
+                    top: unset;
+                    transform: translateY(-40%);
+                    align-self: flex-end;
+                    padding: 10px 50px;
+                    border-radius: $base__border-radius;
+                    background-color: var(--form-head-color, #{$form-head-color});
+                }
+            }
+        }
+    }
+}
+
+.location-description {
+    font-size: 18px;
+}
+
+.search-result-page {
+    &,
+    &.st-tours {
+        .grid-item {
+            .service-border {
+                @include set-border-default(true);
+            }
+        }
+    }
+}

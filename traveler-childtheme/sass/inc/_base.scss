@@ -1,0 +1,57 @@
+:root {
+    --main-color: #{$main-color};
+    --link-color: #{$link-color};
+    --link-color-dark: #{$link-color-dark};
+	--grey-color: #{$grey-color};
+	--light-grey-color: #{$light-grey-color};
+    --orange-color: #{$orange-color};
+    --cyan-color: #{$color__turquoise};
+    --form-head-color: #{$form-head-color};
+}
+
+a,
+input,
+button,
+select,
+textarea {
+    outline: none;
+}
+
+.btn {
+    &.btn-green {
+        &:hover {
+            background-color: var(--orange-color, #{$color__orange});
+        }
+    }
+}
+
+@each $bgc in map-keys($color-backgrounds) {
+    .bg__#{$bgc} {
+        &, * {
+            background-color: map-get($color-backgrounds, $bgc);
+        }
+    }
+}
+
+%search-form-fields-unset-width {
+    width: unset;
+}
+
+%search-form-fields-no-border-mobile {
+    @media (max-width: 991px) {
+        border-right: none;
+    }
+}
+
+%default-page-text-color {
+    color: var(--main-color, #{$main-color});
+    //color: var(---form-head-color, #{$form-head-color});
+}
+
+%default-form-head {
+    background-color: var(--form-head-color, #{$color__turquoise});
+}
+
+%default-booking-price-color {
+    color: $color__white !important;
+}

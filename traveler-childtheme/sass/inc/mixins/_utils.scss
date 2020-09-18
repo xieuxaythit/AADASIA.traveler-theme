@@ -1,0 +1,42 @@
+@mixin set-border($args) {
+    @each $key in map-keys($args) {
+        border-#{$key}: map-get($args, $key);
+    }
+}
+
+@mixin set-border-default($has-radius:false) {
+    $radius: 0;
+    @if $has-radius = true {
+        $radius: $base__border-radius;
+    }
+    @include set-border((width: 1px, style: solid, color: var(--light-grey-color, #{$light-grey-color}), radius: $radius));
+}
+
+@mixin set-default-booking-form {
+    .form-book-wrapper {
+        @content;
+
+        .form-head {
+            @extend %default-form-head;
+            
+            .price {
+                .label,
+                .value .text-lg {
+                    @extend %default-booking-price-color;
+                }
+            }
+        }
+    }
+}
+
+@mixin set-default-destination-image-style {
+    .image {
+        border-radius: $base__border-radius;
+
+        img {
+            border-radius: $base__border-radius;
+
+            @content;
+        }
+    }
+}

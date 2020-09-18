@@ -1,0 +1,67 @@
+// General settings
+$grid-breakpoints: (
+  us: 0,
+  xs: 575px,
+  sm: 767px,
+  md: 991px,
+  lg: 1333px,
+  xl: 1746px
+);
+
+$base__opacity: .8;
+$base__border-radius: 15px;
+
+// Colors
+
+$color__white: #ffffff;
+$color__black: #000000;
+$color__yellow: #fcd759;
+$color__orange: #ee6226;
+$color__orange-dark: #f97251;
+$color__brown: #9e471c;
+$color__brown-dark: #73431b;
+$color__green: #53863d;
+$color__green-dark: #1e6d32;
+$color__green-light: #01b403;
+
+$color__blue-gray:  #5d6c89;
+$color__turquoise:  #36d6e7;
+$color__tangerine:  #feb06a;
+$color__cream:      #fbf6f3;
+
+$color__darkblue:   #071330;
+$color__mnblue:     #0C4160;
+$color__mistyblue:  #e1e8ef;
+
+// Bamboo beach style
+
+$main-color:        $color__blue-gray;
+$link-color:        $color__orange;
+$link-color-dark:   $color__darkblue;
+$grey-color:        $color__mnblue;
+$light-grey-color:  $color__mistyblue;
+$orange-color:      $color__orange;
+$form-head-color:   $color__turquoise;
+
+$tour-program-left-border-color: (odd: $color__turquoise, even: $orange-color);
+
+$color-backgrounds: (
+                        turquoise: $color__turquoise, 
+                        orange: $color__orange, 
+                        blue-gray: $color__blue-gray, 
+                        dark-blue: $color__darkblue, 
+                        misty-blue: $color__mistyblue
+                    );
+
+$search-fields-mapping: (date: "form-date-search-new", destination: "field-detination", type: "field-tour-type", guest: "field-guest-new", price: "st-price-field", duration: "field-durations");
+
+$color__input-background: #fff !default;
+$color__input-border: #fff !default;
+$color__input-icon: #aaa !default;
+$color__input-text: #232323 !default;
+$color__input-button: $color__yellow !default;
+$color__font-icon: $color__green_light !default;
+$color__paging-background: $color__yellow !default;
+
+// e:Bamboo beach style
+

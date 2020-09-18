@@ -1,0 +1,76 @@
+.st-search-form-tour {
+    .tour-search-form-home {
+        .search-form {
+            width: 100%;
+
+            .form {
+                flex: 1;
+                justify-content: space-between;
+
+                .form-group {
+                    flex: 1 0 auto;
+
+                    @each $key in map-keys($search-fields-mapping) {
+                        $field: map-get($search-fields-mapping, $key);
+                        &.#{$field} {
+                            @extend %search-form-fields-unset-width;
+                            @extend %search-form-fields-no-border-mobile;
+                        }
+                    }
+                }
+
+                .form-button-new {
+                    .btn-search {
+                        border-radius: 0 $base__border-radius $base__border-radius 0;
+
+                        @media (max-width: 991px) {
+                            border-radius: 0 0 $base__border-radius $base__border-radius;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.search-result-page {
+    &.st-tours {
+        .search-form-top {
+            .search-form {
+                .form-extra-field,
+                .form-date-field {
+                    padding: 16px 0;
+                }
+                
+                .form-button {
+                    button {
+                        right: 0;
+                        border-radius: 0 $base__border-radius $base__border-radius 0;
+                    }
+                }
+            }
+        }
+
+        .search-form-mobile {
+            .form-group {
+                input {
+                    //border-radius: $base__border-radius 0 0 $base__border-radius;
+                }
+                
+                button {
+                    padding: 15px 20px 10px 20px;
+                    //border-radius: 0 $base__border-radius $base__border-radius 0;
+
+                    .fa.input-icon {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+    .search-form-wrapper {
+        .search-form {
+            border-radius: $base__border-radius;
+        }
+    }
+}

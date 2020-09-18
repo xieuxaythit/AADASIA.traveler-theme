@@ -1,0 +1,123 @@
+.st-list-features {
+    background-color: $color__turquoise;
+}
+
+#st-content-wrapper {
+    &.st-single-tour {
+        &,
+        &.st-single-tour-new {
+            .widgets {
+                @include set-default-booking-form;
+            }
+
+            @include set-default-booking-form {
+                .tour-sale-box {
+                    top: 0;
+                    right: 0;
+
+                    .st_sale_class {
+                        top: -10px;
+                        background-color: var(--orange-color, #{$orange-color});
+                    }
+                }
+            }
+        }
+
+        .st-list-tour-related {
+            .item {
+                border-radius: $base__border-radius;
+                overflow: hidden;
+            }
+        }
+
+        .st-program 
+            {
+                .st-program-list {
+                    .item {
+                        @each $key in map-keys($tour-program-left-border-color) {
+                            &:nth-child(#{$key}) {
+                                border-left-color: map-get($tour-program-left-border-color, $key);
+                            }
+                        }
+                    }
+                }
+            }
+    }
+
+    .form-book-wrapper {
+        background-color: $color__cream;
+        border-radius: $base__border-radius;
+        border-width: 0;
+        border-color: transparent;
+        overflow: hidden;
+        box-shadow: 0 0 10px 0 rgba(0,0,0,.3);
+
+        .form-head {
+            //@extend %default-form-head;
+
+            .price {
+                .label,
+                .value .text-lg {
+                    @extend %default-booking-price-color;
+                }
+            }
+        }
+
+        .form-group {
+            border-top: none;
+            border-bottom: 1px solid $color__mistyblue;
+
+            &.form-guest-search {
+                border-bottom: none;
+
+                .guest-wrapper {
+                    border-bottom: 1px solid $color__mistyblue;
+                }
+            }
+        }
+
+        .submit-group {
+            border-top: 1px solid $color__mistyblue;
+        }
+
+        .st-sent-mail-customer {
+            background-color: $color__cream;
+        }
+    }
+
+    .destination-item {
+        @include set-default-destination-image-style {
+            filter: saturate(0.5);
+        }
+
+        &:hover {
+            @include set-default-destination-image-style {
+                filter: saturate(1);
+            }
+        }
+
+        .image {
+            .content {
+                .title {
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+
+    .hotel-target-book-mobile {
+        border: none;
+        @extend %default-form-head;
+
+        .price-wrapper {
+            &, 
+            .price {
+                @extend %default-booking-price-color;        
+            }
+        }
+    }
+}
+
+.best-seller-swapper {
+    margin-top: 0;
+}

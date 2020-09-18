@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "../../Test sites/solo.local"
+		},
+		{
+			"path": "../../Test sites/holidays.local"
+		},
+		{
+			"path": "../../Test sites/traveler.local"
+		},
+		{
+			"path": "traveler-childtheme"
+		}
+	],
+	"settings": {}
+}

@@ -1,0 +1,35 @@
+#header {
+    .header {
+        background-color: $color__cream;
+
+        .header-left {
+            #st-main-menu {
+                .main-menu {
+                    > li {
+                        > a {
+                            @at-root .single &,
+                            .single-location &,
+                            & {
+                                @extend %default-page-text-color;
+                            }
+                        }
+
+                        &.menu-item-has-children {
+                            .fa {
+                                @at-root .single &,
+                                .single-location &,
+                                & {
+                                    @extend %default-page-text-color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        @at-root .single & {
+
+        }
+    }
+}

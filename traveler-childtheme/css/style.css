@@ -1,0 +1,246 @@
+/*
+Theme Name:     Traveler Childtheme
+Description:    
+Author:         Shinetheme
+Template:       traveler
+
+(optional values you can add: Theme URI, Author URI, Version)
+*/
+:root {
+	--main-color: #5d6c89;
+	--link-color: #ee6226;
+	--link-color-dark: #071330;
+	--grey-color: #0C4160;
+	--light-grey-color: #e1e8ef;
+	--orange-color: #ee6226;
+	--cyan-color: #36d6e7;
+	--form-head-color: #36d6e7;
+}
+
+a,
+input,
+button,
+select,
+textarea {
+	outline: none;
+}
+
+.btn.btn-green:hover {
+	background-color: var(--orange-color, #ee6226);
+}
+
+.bg__turquoise, .bg__turquoise * {
+	background-color: #36d6e7;
+}
+
+.bg__orange, .bg__orange * {
+	background-color: #ee6226;
+}
+
+.bg__blue-gray, .bg__blue-gray * {
+	background-color: #5d6c89;
+}
+
+.bg__dark-blue, .bg__dark-blue * {
+	background-color: #071330;
+}
+
+.bg__misty-blue, .bg__misty-blue * {
+	background-color: #e1e8ef;
+}
+
+.st-search-form-tour .tour-search-form-home .search-form .form .form-group.form-date-search-new, .st-search-form-tour .tour-search-form-home .search-form .form .form-group.field-detination, .st-search-form-tour .tour-search-form-home .search-form .form .form-group.field-tour-type, .st-search-form-tour .tour-search-form-home .search-form .form .form-group.field-guest-new, .st-search-form-tour .tour-search-form-home .search-form .form .form-group.st-price-field, .st-search-form-tour .tour-search-form-home .search-form .form .form-group.field-durations {
+	width: unset;
+}
+
+@media (max-width: 991px) {
+	.st-search-form-tour .tour-search-form-home .search-form .form .form-group.form-date-search-new, .st-search-form-tour .tour-search-form-home .search-form .form .form-group.field-detination, .st-search-form-tour .tour-search-form-home .search-form .form .form-group.field-tour-type, .st-search-form-tour .tour-search-form-home .search-form .form .form-group.field-guest-new, .st-search-form-tour .tour-search-form-home .search-form .form .form-group.st-price-field, .st-search-form-tour .tour-search-form-home .search-form .form .form-group.field-durations {
+		border-right: none;
+	}
+}
+
+.single #header .header .header-left #st-main-menu .main-menu > li > a,
+.single-location #header .header .header-left #st-main-menu .main-menu > li > a, #header .header .header-left #st-main-menu .main-menu > li > a, .single #header .header .header-left #st-main-menu .main-menu > li.menu-item-has-children .fa,
+.single-location #header .header .header-left #st-main-menu .main-menu > li.menu-item-has-children .fa, #header .header .header-left #st-main-menu .main-menu > li.menu-item-has-children .fa {
+	color: var(--main-color, #5d6c89);
+}
+
+#st-content-wrapper.st-single-tour .widgets .form-book-wrapper .form-head, #st-content-wrapper.st-single-tour.st-single-tour-new .widgets .form-book-wrapper .form-head, #st-content-wrapper.st-single-tour .form-book-wrapper .form-head, #st-content-wrapper.st-single-tour.st-single-tour-new .form-book-wrapper .form-head, #st-content-wrapper .hotel-target-book-mobile {
+	background-color: var(--form-head-color, #36d6e7);
+}
+
+#st-content-wrapper.st-single-tour .widgets .form-book-wrapper .form-head .price .label,
+#st-content-wrapper.st-single-tour .widgets .form-book-wrapper .form-head .price .value .text-lg, #st-content-wrapper.st-single-tour.st-single-tour-new .widgets .form-book-wrapper .form-head .price .label,
+#st-content-wrapper.st-single-tour.st-single-tour-new .widgets .form-book-wrapper .form-head .price .value .text-lg, #st-content-wrapper.st-single-tour .form-book-wrapper .form-head .price .label,
+#st-content-wrapper.st-single-tour .form-book-wrapper .form-head .price .value .text-lg, #st-content-wrapper.st-single-tour.st-single-tour-new .form-book-wrapper .form-head .price .label,
+#st-content-wrapper.st-single-tour.st-single-tour-new .form-book-wrapper .form-head .price .value .text-lg, #st-content-wrapper .form-book-wrapper .form-head .price .label,
+#st-content-wrapper .form-book-wrapper .form-head .price .value .text-lg, #st-content-wrapper .hotel-target-book-mobile .price-wrapper,
+#st-content-wrapper .hotel-target-book-mobile .price-wrapper .price {
+	color: #ffffff !important;
+}
+
+#header .header {
+	background-color: #fbf6f3;
+}
+
+.single.single-location .sts-banner {
+	background-position: center center;
+}
+
+.single.single-location .sts-banner .container {
+	display: flex;
+	height: 100%;
+}
+
+body.single.single-location .sts-banner h1 {
+	position: static;
+	top: unset;
+	transform: translateY(-40%);
+	align-self: flex-end;
+	padding: 10px 50px;
+	border-radius: 15px;
+	background-color: var(--form-head-color, #36d6e7);
+}
+
+.location-description {
+	font-size: 18px;
+}
+
+.search-result-page .grid-item .service-border, .search-result-page.st-tours .grid-item .service-border {
+	border-width: 1px;
+	border-style: solid;
+	border-color: var(--light-grey-color, #e1e8ef);
+	border-radius: 15px;
+}
+
+.st-search-form-tour .tour-search-form-home .search-form {
+	width: 100%;
+}
+
+.st-search-form-tour .tour-search-form-home .search-form .form {
+	flex: 1;
+	justify-content: space-between;
+}
+
+.st-search-form-tour .tour-search-form-home .search-form .form .form-group {
+	flex: 1 0 auto;
+}
+
+.st-search-form-tour .tour-search-form-home .search-form .form .form-button-new .btn-search {
+	border-radius: 0 15px 15px 0;
+}
+
+@media (max-width: 991px) {
+	.st-search-form-tour .tour-search-form-home .search-form .form .form-button-new .btn-search {
+		border-radius: 0 0 15px 15px;
+	}
+}
+
+.search-result-page.st-tours .search-form-top .search-form .form-extra-field,
+.search-result-page.st-tours .search-form-top .search-form .form-date-field {
+	padding: 16px 0;
+}
+
+.search-result-page.st-tours .search-form-top .search-form .form-button button {
+	right: 0;
+	border-radius: 0 15px 15px 0;
+}
+
+.search-result-page.st-tours .search-form-mobile .form-group button {
+	padding: 15px 20px 10px 20px;
+}
+
+.search-result-page.st-tours .search-form-mobile .form-group button .fa.input-icon {
+	display: block;
+}
+
+.search-result-page .search-form-wrapper .search-form {
+	border-radius: 15px;
+}
+
+.st-list-features {
+	background-color: #36d6e7;
+}
+
+#st-content-wrapper.st-single-tour .form-book-wrapper .tour-sale-box, #st-content-wrapper.st-single-tour.st-single-tour-new .form-book-wrapper .tour-sale-box {
+	top: 0;
+	right: 0;
+}
+
+#st-content-wrapper.st-single-tour .form-book-wrapper .tour-sale-box .st_sale_class, #st-content-wrapper.st-single-tour.st-single-tour-new .form-book-wrapper .tour-sale-box .st_sale_class {
+	top: -10px;
+	background-color: var(--orange-color, #ee6226);
+}
+
+#st-content-wrapper.st-single-tour .st-list-tour-related .item {
+	border-radius: 15px;
+	overflow: hidden;
+}
+
+#st-content-wrapper.st-single-tour .st-program .st-program-list .item:nth-child(odd) {
+	border-left-color: #36d6e7;
+}
+
+#st-content-wrapper.st-single-tour .st-program .st-program-list .item:nth-child(even) {
+	border-left-color: #ee6226;
+}
+
+#st-content-wrapper .form-book-wrapper {
+	background-color: #fbf6f3;
+	border-radius: 15px;
+	border-width: 0;
+	border-color: transparent;
+	overflow: hidden;
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+#st-content-wrapper .form-book-wrapper .form-group {
+	border-top: none;
+	border-bottom: 1px solid #e1e8ef;
+}
+
+#st-content-wrapper .form-book-wrapper .form-group.form-guest-search {
+	border-bottom: none;
+}
+
+#st-content-wrapper .form-book-wrapper .form-group.form-guest-search .guest-wrapper {
+	border-bottom: 1px solid #e1e8ef;
+}
+
+#st-content-wrapper .form-book-wrapper .submit-group {
+	border-top: 1px solid #e1e8ef;
+}
+
+#st-content-wrapper .form-book-wrapper .st-sent-mail-customer {
+	background-color: #fbf6f3;
+}
+
+#st-content-wrapper .destination-item .image {
+	border-radius: 15px;
+}
+
+#st-content-wrapper .destination-item .image img {
+	border-radius: 15px;
+	filter: saturate(0.5);
+}
+
+#st-content-wrapper .destination-item:hover .image {
+	border-radius: 15px;
+}
+
+#st-content-wrapper .destination-item:hover .image img {
+	border-radius: 15px;
+	filter: saturate(1);
+}
+
+#st-content-wrapper .destination-item .image .content .title {
+	font-weight: 700;
+}
+
+#st-content-wrapper .hotel-target-book-mobile {
+	border: none;
+}
+
+.best-seller-swapper {
+	margin-top: 0;
+}

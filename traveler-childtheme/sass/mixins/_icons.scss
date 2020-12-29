@@ -1,0 +1,82 @@
+
+@mixin icon-plus ($icon-size: 1rem, $icon-line-width: 1px, $color: $body-color, $transition: $transition-base) {
+    &:before,
+    &:after {
+        background-color: $color;
+        content: '';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: $transition;
+    }
+
+    &:before {
+        height: $icon-size;
+        right: calc((#{$icon-size} - #{$icon-line-width})/2);
+        width: $icon-line-width;
+    }
+
+    &:after {
+        height: $icon-line-width;
+        right: 0;
+        width: $icon-size;
+    }
+}
+
+@mixin icon-plus-expand ($icon-size: 1rem, $icon-line-width: 1px) {
+    &:before,
+    &:after {
+        transform: rotateZ(45deg) !important;
+    }
+    &:before {
+        margin-top: calc((#{$icon-size} - #{$icon-line-width})/-2);
+    }
+}
+
+@mixin icon-menu-hamburger ($line-size: 2px, $color: $body-color) {
+    position: relative;
+    border-style: solid;
+    border-color: $color;
+    border-width: $line-size 0;
+
+    &:before {
+        content: '';
+        position: absolute;
+        height: $line-size;
+        background-color: $color;
+        left: 0;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+@mixin bg-circle-solid ($bg-color: #000, $zindex: 0) {
+    background-color: transparent;
+    z-index: $zindex;
+
+    &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        padding-bottom: 100%;
+        border-radius: 50%;
+        transform: translateY(-50%);
+        background-color: $bg-color;
+        z-index: -1;
+    }
+}
+
+@mixin bg-slash ($slash-color: #ddd, $direction: left) {
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(to top $direction, transparent 0, transparent 49%, $slash-color 50%, transparent 51%, transparent);
+    }
+}

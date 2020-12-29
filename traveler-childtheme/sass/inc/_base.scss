@@ -7,6 +7,12 @@
     --orange-color: #{$orange-color};
     --cyan-color: #{$color__turquoise};
     --form-head-color: #{$form-head-color};
+    --dunhill-red-color: #{$color__dunhill-red};
+    --logo-red: #{$color-logo-red};
+    --logo-yellow: #{$color-logo-yellow};
+    --logo-orange: #{$color-logo-orange};
+    --logo-green: #{$color-logo-green};
+    --logo-blue: #{$color-logo-blue};
 }
 
 a,
@@ -25,10 +31,24 @@ textarea {
     }
 }
 
+g#ico_card #Group {
+    stroke: var(--grey-color, #{$grey-color});
+}
+
+.bg__color {
+    a.st-tour-link {
+        background-color: $color__white !important;
+    }
+}
+
 @each $bgc in map-keys($color-backgrounds) {
     .bg__#{$bgc} {
         &, * {
             background-color: map-get($color-backgrounds, $bgc);
+        }
+
+        a.st-tour-link {
+            color: map-get($color-backgrounds, $bgc) !important;
         }
     }
 }
@@ -54,4 +74,17 @@ textarea {
 
 %default-booking-price-color {
     color: $color__white !important;
+}
+
+
+// fix admin bar after login 
+
+html {
+    #wpadminbar {
+        @each $bp in map-keys($map: $admin-bar-pos) {
+            @include media-breakpoint-down($bp, $grid-secondary) {
+                top: map-get($map: $admin-bar-pos, $key: $bp);
+            }
+        }
+    }
 }

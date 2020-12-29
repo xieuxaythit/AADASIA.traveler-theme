@@ -1,0 +1,37 @@
+//
+// Utilities - Ratio
+//
+
+
+.ratio_custom {
+	@extend %ratio_custom;
+
+    &--height-sized {
+        height: 10rem; // Fallback value - should be overriden anywhere .ratio_custom--height-sized is used
+        overflow: hidden;
+
+        .ratio_custom__ratio-img {
+            width: auto;
+            max-width: none;
+            position: static;
+        }
+    }
+}
+
+@each $ratio in $ratios {
+    $class-name: '.ratio_';
+    $dim-x: nth($ratio, 1);
+    $dim-y: nth($ratio, 2);
+    
+    @if $dim-x == $dim-y {
+    	$class-name: $class-name + 'square';
+    }
+    @else {
+    	$class-name: $class-name + $dim-x + '-' + $dim-y;
+    }
+    
+    #{$class-name} {
+    	@extend %ratio_custom;
+    	padding-bottom: 100% * $dim-y / $dim-x;
+    }
+}

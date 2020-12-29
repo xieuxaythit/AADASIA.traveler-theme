@@ -1,0 +1,29 @@
+@mixin custom-scrollbar($transparent-track: false) {
+    @if device(desktop) {
+        @if $transparent-track == false {
+            &::-webkit-scrollbar-track {
+                border-radius: $custom-scrollbar-border-radius;
+                background-color: $custom-scrollbar-track-bg-color;
+            }
+        }
+
+        &::-webkit-scrollbar {
+            width: $custom-scrollbar-width;
+            height: $custom-scrollbar-width;
+            -webkit-appearance: none;
+            @if $transparent-track == false {
+                background-color: $custom-scrollbar-track-bg-color;
+            }
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: $custom-scrollbar-border-radius;
+            background-color: $custom-scrollbar-thumb-bg-color;
+        }
+
+        // #region FireFox, since version 64.0
+        scrollbar-width: thin; //auto/thin/none
+        scrollbar-color: $custom-scrollbar-thumb-bg-color $custom-scrollbar-track-bg-color;
+        // #endregion
+    }
+}

@@ -1,0 +1,129 @@
+@function is-same-unit($list) {
+  @if length($list) <= 1 {
+    @return true;
+  }
+
+  $first-unit: null;
+  $return: true;
+
+  @each $value in $list {
+    @if $value != null {
+      @if $first-unit == null {
+        $first-unit: unit($value);
+      }
+
+      @if unit($value) != $first-unit {
+        $return: false;
+      }
+    }
+  }
+  @return $return;
+}
+
+@function value-sum($numbers, $fallback-calc: true) {
+  @if is-same-unit($numbers) {
+    $return: 0;
+
+    @each $number in $numbers {
+      @if is-number($number) {
+        $return: $return + $number;
+      }
+    }
+
+    @return decimal-round($return, 4);
+
+  } @elseif $fallback-calc {
+    $return: "";
+    $is-first: true;
+
+    $units-map: sum-units-to-map($numbers);
+
+    @each $unit, $number in $units-map {
+      $number: decimal-round($number, 4);
+      $is-positive: $number > -$number or $number == -$number;
+      
+      @if $is-first == false and $is-positive == false {
+        $return: $return + " - " + -$number;
+      } @else if $is-first == false {
+        $return: $return + " + " + $number;
+      } @else {
+        $return: to-string($number);
+      }
+
+      $is-first: false;
+    }
+
+    @return calc(#{$return});
+  }
+
+  @return null;
+}
+
+@function to-string($value) {
+  @return inspect($value);
+}
+
+@function round-rem($value) {
+  // Rounds a rem value to match the corresponding rounded px value
+  @return (round($value * $font-size-browser) / $font-size-browser);
+}
+
+
+
+
+////
+// A collection of function for advanced type checking
+// @author Hugo Giraudel
+////
+
+@function is-number($value) {
+  @return type-of($value) == 'number';
+}
+
+@function is-time($value) {
+  @return is-number($value) and index('ms' 's', unit($value)) != null;
+}
+
+@function is-duration($value) {
+  @return is-time($value);
+}
+
+@function is-angle($value) {
+  @return is-number($value) and index('deg' 'rad' 'grad' 'turn', unit($value)) != null;
+}
+
+@function is-frequency($value) {
+  @return is-number($value) and index('Hz' 'kHz', unit($value)) != null;
+}
+
+@function is-integer($value) {
+  @return is-number($value) and round($value) == $value;
+}
+
+@function is-relative-length($value) {
+  @return is-number($value) and index('em' 'ex' 'ch' 'rem' 'vw' 'vh' 'vmin' 'vmax', unit($value)) != null;
+}
+
+@function is-absolute-length($value) {
+  @return is-number($value) and index('cm' 'mm' 'in' 'px' 'pt' 'pc', unit($value)) != null;
+}
+
+@function is-percentage($value) {
+  @return is-number($value) and unit($value) == '%';
+}
+
+@function is-length($value) {
+  @return is-relative-length($value) or is-absolute-length($value);
+}
+
+@function is-resolution($value) {
+  @return is-number($value) and index('dpi' 'dpcm' 'dppx', unit($value)) != null;
+}
+
+@function is-position($value) {
+  @return is-length($value) or is-percentage($value) or index('top' 'right' 'bottom' 'left' 'center', $value) != null;
+}
+
+@function is-color($value) {
+  @return type-of($value) == 'color';
+}

@@ -1,0 +1,47 @@
+@mixin css-declaration($property, $value: null) {
+    // Multiple declarations
+    @if type-of($property) == 'map' {
+        // First output all properties with a single value and remove them from the map. Reduce the other declarations maps for the current device.
+        @each $declaration, $value in $property {
+            //$value: nth($declaration, 2);
+
+            @if type-of($value) != 'map' and $value != () {
+                #{nth($declaration, 1)}: $value;
+                $property: map-remove($property, $declaration);
+            } @else {
+                $property: map-merge($property, ($declaration: reduce-map-for-device($value)));
+            }
+        }
+
+        // Then output all declarations with multiple values
+        @each $breakpoint in map-keys($grid-breakpoints) {
+            @include media-breakpoint-up($breakpoint) {
+                @each $declaration in $property {
+                    $value: nth($declaration, 2);
+
+                    @if type-of($value) == 'map' {
+                        @if map-has-key($value, $breakpoint) {
+                            #{nth($declaration, 1)}: map-get($value, $breakpoint);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // One declaration with multiple values
+    @elseif type-of($value) == 'map' {
+        $value: reduce-map-for-device($value);
+
+        @each $breakpoint in map-keys($value) {
+            @include media-breakpoint-up($breakpoint) {
+                #{$property}: map-get($value, $breakpoint);
+            }
+        }
+    }
+
+    // One declaration with one value
+    @elseif $value != () {
+        #{$property}: $value;
+    }
+}

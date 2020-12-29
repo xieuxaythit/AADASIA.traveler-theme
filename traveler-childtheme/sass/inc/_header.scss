@@ -1,8 +1,26 @@
 #header {
     .header {
-        background-color: $color__cream;
+        background-color: $color__white;
+        padding: 0 20px;
+
+        @include media-breakpoint-up(lg) {
+            padding: 0 50px;
+        }
+
+        @include media-breakpoint-down(sm) {
+            padding: 30px 35px;
+        }
+
+        @include media-breakpoint-down(xs) {
+            padding: 20px;
+        }
 
         .header-left {
+            .logo {
+                img {
+                    min-width: 220px;
+                }
+            }
             #st-main-menu {
                 .main-menu {
                     > li {
@@ -30,6 +48,23 @@
 
         @at-root .single & {
 
+        }
+
+        @at-root & {
+            .logo {
+                img {
+                    max-height: $logo-max-height;
+                }
+            }
+        }
+    }
+
+    #topbar {
+        background: var(--logo-blue, #{$color-logo-blue});
+        padding: 15px 20px;
+
+        @include media-breakpoint-up(lg) {
+            padding: 15px 50px;
         }
     }
 }

@@ -6,6 +6,12 @@ Template:       traveler
 
 (optional values you can add: Theme URI, Author URI, Version)
 */
+/*!
+ * Bootstrap v4.3.1 (https://getbootstrap.com/)
+ * Copyright 2011-2019 The Bootstrap Authors
+ * Copyright 2011-2019 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
 :root {
 	--main-color: #5d6c89;
 	--link-color: #ee6226;
@@ -15,6 +21,12 @@ Template:       traveler
 	--orange-color: #ee6226;
 	--cyan-color: #36d6e7;
 	--form-head-color: #36d6e7;
+	--dunhill-red-color: #870110;
+	--logo-red: #ed1f24;
+	--logo-yellow: #ead124;
+	--logo-orange: #f68622;
+	--logo-green: #069347;
+	--logo-blue: #0f5393;
 }
 
 a,
@@ -29,24 +41,76 @@ textarea {
 	background-color: var(--orange-color, #ee6226);
 }
 
+g#ico_card #Group {
+	stroke: var(--grey-color, #0C4160);
+}
+
+.bg__color a.st-tour-link {
+	background-color: #ffffff !important;
+}
+
 .bg__turquoise, .bg__turquoise * {
 	background-color: #36d6e7;
+}
+
+.bg__turquoise a.st-tour-link {
+	color: #36d6e7 !important;
 }
 
 .bg__orange, .bg__orange * {
 	background-color: #ee6226;
 }
 
+.bg__orange a.st-tour-link {
+	color: #ee6226 !important;
+}
+
+.bg__green, .bg__green * {
+	background-color: #069347;
+}
+
+.bg__green a.st-tour-link {
+	color: #069347 !important;
+}
+
+.bg__yellow, .bg__yellow * {
+	background-color: #fcd759;
+}
+
+.bg__yellow a.st-tour-link {
+	color: #fcd759 !important;
+}
+
+.bg__brown, .bg__brown * {
+	background-color: #9e471c;
+}
+
+.bg__brown a.st-tour-link {
+	color: #9e471c !important;
+}
+
 .bg__blue-gray, .bg__blue-gray * {
 	background-color: #5d6c89;
+}
+
+.bg__blue-gray a.st-tour-link {
+	color: #5d6c89 !important;
 }
 
 .bg__dark-blue, .bg__dark-blue * {
 	background-color: #071330;
 }
 
+.bg__dark-blue a.st-tour-link {
+	color: #071330 !important;
+}
+
 .bg__misty-blue, .bg__misty-blue * {
 	background-color: #e1e8ef;
+}
+
+.bg__misty-blue a.st-tour-link {
+	color: #e1e8ef !important;
 }
 
 .st-search-form-tour .tour-search-form-home .search-form .form .form-group.form-date-search-new, .st-search-form-tour .tour-search-form-home .search-form .form .form-group.field-detination, .st-search-form-tour .tour-search-form-home .search-form .form .form-group.field-tour-type, .st-search-form-tour .tour-search-form-home .search-form .form .form-group.field-guest-new, .st-search-form-tour .tour-search-form-home .search-form .form .form-group.st-price-field, .st-search-form-tour .tour-search-form-home .search-form .form .form-group.field-durations {
@@ -79,12 +143,136 @@ textarea {
 	color: #ffffff !important;
 }
 
-#header .header {
-	background-color: #fbf6f3;
+@media (max-width: 599.98px) {
+	html #wpadminbar {
+		top: -46px;
+	}
 }
 
-.single.single-location .sts-banner {
-	background-position: center center;
+#st-content-wrapper .st-breadcrumb ul li br {
+	display: none;
+}
+
+#header .header {
+	background-color: #ffffff;
+	padding: 0 20px;
+}
+
+@media (min-width: 1333px) {
+	#header .header {
+		padding: 0 50px;
+	}
+}
+
+@media (max-width: 990.98px) {
+	#header .header {
+		padding: 30px 35px;
+	}
+}
+
+@media (max-width: 766.98px) {
+	#header .header {
+		padding: 20px;
+	}
+}
+
+#header .header .header-left .logo img {
+	min-width: 220px;
+}
+
+#header .header .logo img {
+	max-height: 68px;
+}
+
+#header #topbar {
+	background: var(--logo-blue, #0f5393);
+	padding: 15px 20px;
+}
+
+@media (min-width: 1333px) {
+	#header #topbar {
+		padding: 15px 50px;
+	}
+}
+
+.footer__email-subscription {
+	background-color: var(--light-grey-color, #e1e8ef);
+}
+
+@media (min-width: 575px) {
+	.footer__logo--image img {
+		width: 150px;
+	}
+}
+
+@media (min-width: 991px) {
+	.footer__logo--image img {
+		width: 220px;
+	}
+}
+
+.footer__menu--header {
+	color: var(--logo-blue, #0f5393);
+	font-weight: 700;
+	text-transform: uppercase;
+	padding-bottom: 15px;
+}
+
+.footer__menu--header ~ .widget_nav_menu {
+	margin-bottom: 30px;
+}
+
+.footer__contact-info {
+	font-size: 16px;
+	color: var(--main-color, #5d6c89);
+}
+
+.footer__contact-info i.fa, .footer__contact-info i.las {
+	font-size: 1.5rem;
+	color: #ffffff;
+	background-color: var(--logo-orange, #f68622);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 2em;
+	padding: .5em;
+	border-radius: 50%;
+}
+
+.footer__social-icon i.fa {
+	font-size: 2rem;
+	color: #ffffff;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 2em;
+	padding: .5em;
+	border-radius: 50%;
+}
+
+.footer__social-icon i.fa.fa-facebook {
+	background-color: var(--logo-blue, #0f5393);
+}
+
+.footer__social-icon i.fa.fa-instagram {
+	background-color: var(--logo-red, #ed1f24);
+}
+
+.footer__social-icon a.social-icon {
+	display: inline-block;
+	font-size: 1.75rem;
+}
+
+.footer__social-icon a.social-icon:not(:last-child) {
+	margin-right: 2rem;
+}
+
+.footer__social-icon a.social-icon:not(:last-child) i {
+	margin-right: 1rem;
+}
+
+#main-footer .menu li a, #main-footer .menu li.menu-item a {
+	margin-bottom: 15px;
 }
 
 .single.single-location .sts-banner .container {
@@ -92,18 +280,41 @@ textarea {
 	height: 100%;
 }
 
+body.single.single-location .sts-banner {
+	background-position: center center;
+}
+
+@media (min-width: 991px) {
+	body.single.single-location .sts-banner {
+		height: 680px;
+	}
+}
+
 body.single.single-location .sts-banner h1 {
 	position: static;
 	top: unset;
 	transform: translateY(-40%);
 	align-self: flex-end;
+	font-family: inherit;
 	padding: 10px 50px;
 	border-radius: 15px;
 	background-color: var(--form-head-color, #36d6e7);
 }
 
-.location-description {
-	font-size: 18px;
+@media (min-width: 767px) {
+	.location-content__gallery .st-aboutus-gallery .st-gallery .item {
+		height: 500px !important;
+	}
+}
+
+@media (min-width: 991px) {
+	.location-content__gallery .st-aboutus-gallery .st-gallery .item {
+		height: 800px !important;
+	}
+}
+
+.location-content__gallery .st-aboutus-gallery .st-gallery .slogan {
+	display: none;
 }
 
 .search-result-page .grid-item .service-border, .search-result-page.st-tours .grid-item .service-border {
@@ -111,6 +322,11 @@ body.single.single-location .sts-banner h1 {
 	border-style: solid;
 	border-color: var(--light-grey-color, #e1e8ef);
 	border-radius: 15px;
+}
+
+.search-result-page .st-hotel-result .item-service h4.service-title a br,
+.search-result-page .st-rental-result .item-service h4.service-title a br {
+	display: none;
 }
 
 .st-search-form-tour .tour-search-form-home .search-form {
@@ -158,8 +374,116 @@ body.single.single-location .sts-banner h1 {
 	border-radius: 15px;
 }
 
+.search-result-page .banner {
+	display: flex;
+	align-items: center;
+}
+
+@media (min-width: 991px) {
+	.search-result-page .banner {
+		padding: 80px 0;
+		min-height: 350px;
+	}
+}
+
+@media (max-width: 990.98px) {
+	.search-result-page .banner {
+		padding: 50px 0;
+		min-height: 200px;
+	}
+}
+
+.search-result-page .banner h1 {
+	position: relative;
+	display: inline-block;
+}
+
+@media (min-width: 991px) {
+	.search-result-page .banner h1 {
+		min-height: 80px;
+		padding: 20px 80px 20px 20px;
+	}
+	.search-result-page .banner h1::before {
+		content: "";
+		position: absolute;
+		width: 2px;
+		height: 100%;
+	}
+}
+
+.landing-page__header {
+	padding: 150px 0;
+}
+
+.landing-page__header h1, .landing-page__header h2, .landing-page__header h3, .landing-page__header h4, .landing-page__header h5, .landing-page__header span {
+	color: #ffffff;
+}
+
+.landing-page__header h1, .landing-page__header h2, .landing-page__header h3 {
+	text-transform: uppercase;
+}
+
+.landing-page__section--title {
+	color: var(--link-color, #ee6226);
+	margin-bottom: 45px;
+}
+
+.landing-page__section--content {
+	color: inherit;
+	line-height: 1.5;
+}
+
+.landing-page__section--content p, .landing-page__section--content span, .landing-page__section--content ul, .landing-page__section--content li {
+	font-size: 1.75rem;
+}
+
+.red {
+	color: #870110;
+}
+
+.white {
+	color: #ffffff;
+}
+
+.no-margin h1, .no-margin h2, .no-margin h3, .no-margin h4, .no-margin h5,
+.no-margin .h1, .no-margin .h2, .no-margin .h3, .no-margin .h4, .no-margin .h5 {
+	margin: 0 0 0 0;
+}
+
+.location-description,
+.service-description {
+	font-size: 1.5rem;
+}
+
+.st-aboutus-title {
+	font-size: 24px;
+	color: var(--link-color, #ee6226);
+	margin-bottom: 20px !important;
+}
+
+.st-aboutus-content {
+	font-size: 16px;
+	color: #768092;
+	line-height: 24px;
+}
+
+.st-list-statistic .row {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.st-list-statistic .item {
+	min-height: 200px;
+}
+
 .st-list-features {
 	background-color: #36d6e7;
+}
+
+.tour-slider-wrapper {
+	position: relative;
+	z-index: 999;
 }
 
 #st-content-wrapper.st-single-tour .form-book-wrapper .tour-sale-box, #st-content-wrapper.st-single-tour.st-single-tour-new .form-book-wrapper .tour-sale-box {
@@ -170,6 +494,15 @@ body.single.single-location .sts-banner h1 {
 #st-content-wrapper.st-single-tour .form-book-wrapper .tour-sale-box .st_sale_class, #st-content-wrapper.st-single-tour.st-single-tour-new .form-book-wrapper .tour-sale-box .st_sale_class {
 	top: -10px;
 	background-color: var(--orange-color, #ee6226);
+}
+
+#st-content-wrapper.st-single-tour .st-tour-feature .row {
+	display: flex;
+	justify-content: space-between;
+}
+
+#st-content-wrapper.st-single-tour .st-tour-feature .row > div:last-child {
+	display: none;
 }
 
 #st-content-wrapper.st-single-tour .st-list-tour-related .item {
@@ -183,6 +516,33 @@ body.single.single-location .sts-banner h1 {
 
 #st-content-wrapper.st-single-tour .st-program .st-program-list .item:nth-child(even) {
 	border-left-color: #ee6226;
+}
+
+@media (min-width: 991px) {
+	#st-content-wrapper .tour-featured-image.featured-image-background,
+	#st-content-wrapper .tour-featured-image .st-gallery {
+		height: 680px;
+	}
+}
+
+#st-content-wrapper .st-list-tour-related .item .body .st-link br {
+	display: none;
+}
+
+#st-content-wrapper .st-list-tour-related .item h4.title {
+	font-size: 1.75rem;
+	min-height: 50px;
+}
+
+@media (min-width: 991px) {
+	#st-content-wrapper .st-list-tour-related .st-flex.space-between {
+		flex-direction: column;
+		align-items: flex-start;
+		margin-top: 30px;
+	}
+	#st-content-wrapper .st-list-tour-related .st-flex.space-between > div {
+		margin-bottom: 15px;
+	}
 }
 
 #st-content-wrapper .form-book-wrapper {
@@ -221,7 +581,6 @@ body.single.single-location .sts-banner h1 {
 
 #st-content-wrapper .destination-item .image img {
 	border-radius: 15px;
-	filter: saturate(0.5);
 }
 
 #st-content-wrapper .destination-item:hover .image {
@@ -230,7 +589,6 @@ body.single.single-location .sts-banner h1 {
 
 #st-content-wrapper .destination-item:hover .image img {
 	border-radius: 15px;
-	filter: saturate(1);
 }
 
 #st-content-wrapper .destination-item .image .content .title {
@@ -243,4 +601,32 @@ body.single.single-location .sts-banner h1 {
 
 .best-seller-swapper {
 	margin-top: 0;
+}
+
+.best-seller-swapper .st-best-seller-text .best-seller-label {
+	color: #ffffff;
+	font-size: 1.5rem;
+	font-weight: 600;
+	background-color: var(--orange-color, #ee6226);
+	text-transform: uppercase;
+	padding: .3rem 1.5rem;
+	border-radius: 16px;
+}
+
+.best-seller-swapper .st-best-seller-text .tour-title br {
+	display: none;
+}
+
+.best-seller-swapper .st-best-seller-text .st-tour-link {
+	display: inline-block;
+	padding: 1rem 3rem;
+	font-size: 1.5rem;
+	font-weight: 600;
+	text-decoration: none;
+	border-radius: 5px;
+	transition: box-shadow .15s ease-in-out;
+}
+
+.best-seller-swapper .st-best-seller-text .st-tour-link:hover {
+	box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
 }

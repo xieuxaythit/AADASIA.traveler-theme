@@ -3,7 +3,9 @@
 add_action( 'wp_enqueue_scripts', 'enqueue_parent_styles' );
 
 function enqueue_parent_styles() {
-    wp_enqueue_style('bootstrap-css', get_template_directory_uri() . '/v2/css/bootstrap.min.css');
+    //wp_enqueue_style('bootstrap-css', get_template_directory_uri() . '/v2/css/bootstrap.min.css');
+    wp_enqueue_style('bootstrap-css', get_stylesheet_directory_uri() . '/css/bootstrap-3.4.1-dist/bootstrap.min.css');
+    
     wp_enqueue_style('font-awesome-css', get_template_directory_uri() . '/v2/css/font-awesome.min.css');
     wp_enqueue_style('fotorama-css', get_template_directory_uri() . '/v2/js/fotorama/fotorama.css');
     wp_enqueue_style('rangeSlider-css', get_template_directory_uri() . '/v2/js/ion.rangeSlider/css/ion.rangeSlider.css');
@@ -50,42 +52,40 @@ if (!function_exists('st_add_custom_css')) {
     }
 }
 
-add_filter( 'vc_grid_item_shortcodes', 'my_module_add_grid_shortcodes' );
-function my_module_add_grid_shortcodes( $shortcodes ) {
-    $shortcodes['vc_custom_post_meta'] = array(
-        'name' => __( 'Tour min price', 'my-text-domain' ),
-        'base' => 'vc_custom_post_meta',
-        'category' => __( 'Content', 'my-text-domain' ),
-        'description' => __( 'Show custom post meta', 'my-text-domain' ),
-        'post_type' => Vc_Grid_Item_Editor::postType(),
-    );
+// add_filter( 'vc_grid_item_shortcodes', 'my_module_add_grid_shortcodes' );
+// function my_module_add_grid_shortcodes( $shortcodes ) {
+//     $shortcodes['vc_custom_post_meta'] = array(
+//         'name' => __( 'Tour min price', 'my-text-domain' ),
+//         'base' => 'vc_custom_post_meta',
+//         'category' => __( 'Content', 'my-text-domain' ),
+//         'description' => __( 'Show custom post meta', 'my-text-domain' ),
+//         'post_type' => Vc_Grid_Item_Editor::postType(),
+//     );
  
-    return $shortcodes;
-}
-// output function
-add_shortcode( 'vc_custom_post_meta', 'vc_custom_post_meta_render' );
-function vc_custom_post_meta_render($atts, $content, $tag) {
-    return '<h2>Lorem ipsum: {{ custom_meta }}</h2>';
-}
-  
-add_filter( 'vc_gitem_template_attribute_custom_meta', 'vc_gitem_template_attribute_custom_meta ', 10, 2 );
-function vc_gitem_template_attribute_custom_meta( $value, $data ) {
-    /**    
-     * @var Wp_Post $post
-    * @var string $data
-    */
-    extract( array_merge( array(
-        'post' => null,
-        'data' => '',
-    ), $data ) );
-
-    return var_export( get_post_meta( $post->ID, 'min_price' ), true );
-}
-
-// function mytheme_includes() {
-// 	require_once get_theme_file_path( 'inc/best-seller.php' );
+//     return $shortcodes;
 // }
-// add_action( 'after_setup_theme', 'mytheme_includes' );
+// // output function
+// add_shortcode( 'vc_custom_post_meta', 'vc_custom_post_meta_render' );
+// function vc_custom_post_meta_render($atts, $content, $tag) {
+//     return '<h2>Lorem ipsum: {{ custom_meta }}</h2>';
+// }
+  
+// add_filter( 'vc_gitem_template_attribute_custom_meta', 'vc_gitem_template_attribute_custom_meta ', 10, 2 );
+// function vc_gitem_template_attribute_custom_meta( $value, $data ) {
+//     /**    
+//      * @var Wp_Post $post
+//     * @var string $data
+//     */
+//     extract( array_merge( array(
+//         'post' => null,
+//         'data' => '',
+//     ), $data ) );
+
+//     return var_export( get_post_meta( $post->ID, 'min_price' ), true );
+// }
+
+
+//add_filter( 'big_image_size_threshold', '__return_false' );
 
 include_once  "inc/shortcodes.php";
 include_once  "inc/custom_currency.php";

@@ -1,0 +1,106 @@
+// Mixin - Type
+
+@mixin fs-base() {
+	font-size: $font-size-base;
+	@include media-breakpoint-up(lg) {
+		font-size: multiply-size($font-size-base);
+	}
+}
+
+@mixin fs-xl() {
+	font-size: $font-size-xl;
+	@include media-breakpoint-up(lg) {
+		font-size: multiply-size($font-size-xl);
+	}
+}
+
+@mixin fs-lg() {
+	font-size: $font-size-lg;
+	@include media-breakpoint-up(lg) {
+		font-size: multiply-size($font-size-lg);
+	}
+}
+
+@mixin fs-sm() {
+	font-size: $font-size-sm;
+	@include media-breakpoint-up(lg) {
+		font-size: multiply-size($font-size-sm);
+	}
+}
+
+@mixin fs-xs() {
+	font-size: $font-size-xs;
+	@include media-breakpoint-up(lg) {
+		font-size: multiply-size($font-size-xs);
+	}
+}
+
+
+@mixin fs-em-base() {
+	font-size: $font-size-em-base;
+	@include media-breakpoint-up(lg) {
+		font-size: multiply-em-size($font-size-em-base);
+	}
+}
+
+@mixin fs-em-xl() {
+	font-size: $font-size-em-xl;
+	@include media-breakpoint-up(lg) {
+		font-size: multiply-em-size($font-size-em-xl);
+	}
+}
+
+@mixin fs-em-lg() {
+	font-size: $font-size-em-lg;
+	@include media-breakpoint-up(lg) {
+		font-size: multiply-em-size($font-size-em-lg);
+	}
+}
+
+@mixin fs-em-sm() {
+	font-size: $font-size-em-sm;
+	@include media-breakpoint-up(lg) {
+		font-size: multiply-em-size($font-size-em-sm);
+	}
+}
+
+@mixin fs-em-xs() {
+	font-size: $font-size-em-xs;
+	@include media-breakpoint-up(lg) {
+		font-size: multiply-em-size($font-size-em-xs);
+	}
+}
+
+
+@function rem-to-em-size($rem) {
+	//$size: round(round($size * $font-size-browser) * $font-multiplier) / $font-size-browser;
+	$size: 1 / $font-size-base * $rem;
+	@return strip-unit($size) * 1em;
+}
+
+@function multiply-size($size) {
+	$size: ceil(round($size * $font-size-browser) * $font-multiplier) / $font-size-browser;
+	@return $size;
+}
+
+@function multiply-size_round-method($size) {
+	$size: round(round($size * $font-size-browser) * $font-multiplier) / $font-size-browser;
+	@return $size;
+}
+
+
+@function multiply-em-size($size) {
+	@if $size == 1em {
+		$size: $font-multiplier * 1em;
+	}
+	$size: ceil($font-size-base * $font-multiplier * $size * $font-size-browser) / round($font-size-base * $font-multiplier * $font-size-browser);
+	@return $size;
+}
+
+@function multiply-em-size_round-method($size) {
+	@if $size == 1em {
+		$size: $font-multiplier * 1em;
+	}
+	$size: round($font-size-base * $font-multiplier * $size * $font-size-browser) / round($font-size-base * $font-multiplier * $font-size-browser);
+	@return $size;
+}

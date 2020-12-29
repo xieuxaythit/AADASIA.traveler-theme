@@ -1,0 +1,208 @@
+// Mixin - Map functions
+
+
+// Reverse the values of a map
+
+@function mapReverse($map) {
+    $result: null;
+
+    @if type-of($map) == "map" {
+        $keys: map-keys($map);
+        $map-reversed: ();
+        
+        @for $i from length($keys) through 1 {
+            $map-reversed: map-merge(
+                $map-reversed,
+                (nth($keys, $i): map-get($map, nth($keys, $i)))
+            );
+        }
+
+        @if type-of($map-reversed) == "map" {
+            $result: $map-reversed;
+        } @else {
+            @warn 'There was an error reversing the order of "#{$map}"';
+        }
+    } @else {
+        @warn '"#{$map}" is not a valid map';
+    }
+
+    @return $result;
+}
+
+
+// Convert value like "10px 20px 30px" to a map with the keys "top", "right", "bottom" and "left"
+
+@function directional-value-to-map($value) {
+    @if type-of($value) == 'map' {
+        @return $value;
+    }
+
+    $top:         nth($value, 1);
+    $right:       nth($value, 1);
+    $bottom:      nth($value, 1);
+    $left:        nth($value, 1);
+
+    @if (length($value) >= 2) {
+        $right:   nth($value, 2);
+        $left:    nth($value, 2);
+    }
+
+    @if (length($value) >= 3) {
+        $bottom:  nth($value, 3);
+    }
+
+    @if (length($value) >= 4) {
+        $left:    nth($value, 4);
+    }
+
+    @return (
+        top: $top,
+        right: $right,
+        bottom: $bottom,
+        left: $left
+    );
+}
+
+@function get-directional-value($value, $direction) {
+    @return map-get(directional-value-to-map($value), $direction);
+}
+
+
+// Get the value for a breakpoint even if the breakpoint is not in the map
+
+@function get-breakpoint-value($map, $breakpoint) {
+    $run: true;
+    $return: null;
+    
+    @while $run {
+        @if map-has-key($map, $breakpoint) {
+            $return: map-get($map, $breakpoint);
+            $run: false;
+        } @else {
+            $breakpoint: breakpoint-prev($breakpoint, $grid-breakpoints-original);
+            $run: $breakpoint != null;
+        }
+    }
+
+    @return $return;
+}
+
+
+// Remove unneeded values from map
+
+@function reduce-map-for-device($map) {
+    @if type-of($map) != 'map' and $map != () {
+        // If $map is not a map, return the value as a map
+        @return (xs: $map);
+    }
+
+    $return: ();
+    $last-value: null;
+    $map-keys: map-keys($map);
+    $device-first-bp: nth($breakpoint-sizes, 1);
+
+    @each $breakpoint, $value in $map {
+        $active-breakpoint: index($breakpoint-sizes, $breakpoint) != null;
+        $index: index($map-keys, $breakpoint);
+
+        @if $active-breakpoint and $index > 1 and length($return) == 0 and compare-breakpoints($breakpoint, $device-first-bp) != 0 {
+            // Add to $return if this is an active breakpoint and it's not the first value in the map and $return is empty and this is not the first breakpoint for the current device
+            $return: map-merge((nth($map-keys, $index - 1): nth(map-values($map), $index - 1)), $return);
+        }
+
+        @if $active-breakpoint and $value != $last-value or $index == length($map-keys) and length($return) == 0 and compare-breakpoints($breakpoint, $device-first-bp) == -1 {
+            // Add to $return if (A) this is an active breakpoint and it's not the same value as the last value in the map or (B) this is the last value but we're still under the smallest breakpoint of the current device in which case we still need the value (ie. xs or sm is needed on desktop if it's the largest value in the map)
+            $return: map-merge($return, ($breakpoint: $value));
+        }
+
+        $last-value: $value;
+    }
+
+    @return $return;
+}
+
+
+// Compare two breakpoints - ie. sm and lg
+
+@function compare-breakpoints($bp1, $bp2) {
+    // Return values:
+    // -1 (if $bp1 < $bp2)
+    // 0 (if $bp1 = $bp2)
+    // 1 (if $bp1 > $bp2)
+    // null (index of $bp1 or $bp2 is null)
+
+    $bp1-index: index($grid-breakpoints-keys, $bp1);
+    $bp2-index: index($grid-breakpoints-keys, $bp2);
+    $return: null;
+
+    @if $bp1-index != null and $bp2-index != null {
+        @if $bp1-index < $bp2-index {
+            $return: -1;
+        } @elseif $bp1-index == $bp2-index {
+            $return: 0;
+        } @elseif $bp1-index > $bp2-index {
+            $return: 1;
+        }
+    }
+
+    @return $return;
+}
+
+
+// Add number to all breakpoints in a map
+
+@function add-number-to-map($map, $added-number) {
+    @if is-number($added-number) {
+        @each $breakpoint, $value in $map {
+            $map: map-merge($map, ($breakpoint: value-sum(($value, $added-number))));
+        }
+    }
+
+    @return $map;
+}
+
+
+// Return a map with unit as the key and the sum of all the values in the unit as the value
+
+@function sum-units-to-map($list) {
+    $return: ();
+
+    @each $value in $list {
+        @if (is-number($value)) {
+            $unit: unit($value);
+
+            @if ($unit == '') {
+                $unit: 'number';
+            }
+
+            @if map-has-key($return, $unit) {
+                $return: map-merge($return, ($unit: map-get($return, $unit) + $value));
+            } @else {
+                $return: map-merge($return, ($unit: $value));
+            }
+        }
+    }
+
+    @return $return;
+}
+
+
+// Add random string to background urls to bust image caching
+
+@function bg-url($url) {
+    @if not global-variable-exists('_bg-random-string') {
+        $_bg-random-string: str-slice(unique-id(), 2, 7) !global;
+    }
+
+    $qs: if(str-index($url, '?') == null, '?', '&') + 'u=' + $_bg-random-string;
+
+    @if str-index($url, 'url(') == null {
+        $url: 'url(' + $url + ')';
+    }
+
+    $insert-pos: str-index($url, '")');
+    $insert-pos: str-index($url, ')') !default;
+
+    @return unquote(str-insert($url, $qs, $insert-pos));
+}
+

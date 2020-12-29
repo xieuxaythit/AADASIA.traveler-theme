@@ -1,0 +1,49 @@
+// Breakpoint functions
+
+@function breakpoint-prev($name, $breakpoints: $grid-breakpoints, $breakpoint-names: map-keys($breakpoints)) {
+  $n: index($breakpoint-names, $name);
+  @if $n == null { @return null; }
+  @return if($n > 1, nth($breakpoint-names, $n - 1), null);
+}
+
+@function active-breakpoint($name, $breakpoints: $grid-breakpoints) {
+  @return index(map-keys($breakpoints), $name) != null;
+}
+
+@function device($device) {
+  @return map-get($devices, $device) == true;
+}
+
+@function minimum-breakpoint($breakpoints: $grid-breakpoints) {
+  @each $name in map-keys($breakpoints) {
+    @if map-get($breakpoints, $name) > 10px {
+      @return map-get($breakpoints, $name);
+    }
+  }
+}
+
+@function minimum-container-width($max-widths: $container-max-widths) {
+  @each $name, $max-width in $max-widths {
+    @if $max-width > 10px {
+      @return $max-width;
+    }
+  }
+  
+  @return 0;
+}
+
+@mixin media-breakpoint-list($list) {
+  @each $bp in $list {
+    @if length($bp) > 0 {
+        @if length($bp) == 1 {
+            @include media-breakpoint-only($bp) {
+              @content;
+            }
+        } @else if length($bp) == 2 {
+            @include media-breakpoint-between(nth($bp, 1), nth($bp, 2)) {
+              @content;
+            }
+        }
+    }
+  }
+}

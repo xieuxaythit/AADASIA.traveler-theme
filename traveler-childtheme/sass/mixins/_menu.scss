@@ -1,0 +1,155 @@
+// Mixin - Menu
+
+@mixin menu-dropdown (  $menu-dropdown-fixed-width,
+                        $menu-dropdown-fixed-container-max-width,
+                        $menu-dropdown-dynamic-column-width-min,
+                        $menu-dropdown-dynamic-column-width-max,
+                        $menu-dropdown-padding,
+                        $menu-dropdown-col-padding-x,
+                        $menu-dropdown-col-padding-y,
+                        $menu-dropdown-columns,
+                        $menu-dropdown-border-width,
+                        $menu-dropdown-container-margin,
+                        $menu-dropdown-container-top-arrow-size) {
+    .menu__subitems--expand {
+        @include css-declaration('margin-top', $menu-dropdown-container-margin);
+
+        @if $menu-dropdown-border-width != $menu-dropdown-standard-border-width {
+            border-width: $menu-dropdown-border-width;
+        }
+        
+        @each $breakpoint in map-keys($menu-dropdown-padding) {
+            $padding-map:     directional-value-to-map( map-get($menu-dropdown-padding, $breakpoint) );
+            $padding-top:     map-get($padding-map, top);
+            $padding-right:   map-get($padding-map, right);
+            $padding-bottom:  map-get($padding-map, bottom);
+            $padding-left:    map-get($padding-map, left);
+
+            @include media-breakpoint-up($breakpoint) {
+                padding-top: $padding-top;
+                padding-right: $padding-right;
+                padding-left: $padding-left;
+                margin-left: -$padding-left;
+
+                &:after { // Replacement for padding-bottom since overflow with max-height ignores the bottom padding and show the content up against the bottom border
+                    height: $padding-bottom;
+
+                    @if $breakpoint == nth(map-keys($menu-dropdown-padding), 1) {
+                        flex: 0 0 100%;
+                        content: "";
+                    }
+
+                }
+            }
+        }
+        @if $menu-dropdown-fixed-width {
+            @each $breakpoint in map-keys($menu-dropdown-fixed-container-max-width) {
+                @include media-breakpoint-up($breakpoint) {
+                    max-width: map-get($menu-dropdown-fixed-container-max-width, $breakpoint);
+                }
+            }
+        }
+    }
+
+    @if $menu-dropdown-container-top-arrow-size != () {
+        .menu__group--children.menu__group--active {
+            .menu__title {
+                position: relative;
+
+                &:before, &:after {
+                    bottom: -1px;
+                    left: 50%;
+                    border: solid transparent;
+                    border-width: 0 10px 10px 10px;
+                    content: "";
+                    width: 0;
+                    height: 0;
+                    position: absolute;
+                    pointer-events: none;
+                    z-index: $menu-dropdown-main-zindex + 1;
+                    transform: translateX(-50%);
+                }
+
+                &:before {
+                    border-bottom-color: $table-border-color;
+                }
+
+                &:after {
+                    border-bottom-color: $white;
+                }
+
+                @each $bp, $size in $menu-dropdown-container-top-arrow-size {
+                    @include media-breakpoint-up($bp) {
+                        &:before, &:after {
+                            border-width: 0 $size $size $size;
+                        }
+                    }
+                }
+
+                @each $bp, $margin in $menu-dropdown-container-margin {
+                    @include media-breakpoint-up($bp) {
+                        &:before {
+                            bottom: -$margin;
+                        }
+
+                        &:after {
+                            bottom: value-sum((-$margin, -1px));
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    .menu__subitems--level-0 {
+        > ul {
+            @each $breakpoint, $value in $menu-dropdown-col-padding-x {
+                @include media-breakpoint-up($breakpoint) {
+                    margin-left: -$value;
+                    margin-right: -$value;
+
+                    > .menu__item {
+                        padding-left: $value;
+                        padding-right: $value;
+                    }
+                }
+            }
+
+            @each $breakpoint, $value in $menu-dropdown-col-padding-y {
+                @include media-breakpoint-up($breakpoint) {
+                    margin-top: -$value;
+
+                    > .menu__item {
+                        margin-top: $value;
+                    }
+                }
+            }
+
+            > .menu__item {
+                @if $menu-dropdown-fixed-width {
+                    @each $breakpoint in map-keys($menu-dropdown-columns) {
+                        $menu-width: map-get($menu-dropdown-fixed-container-max-width, $breakpoint);
+                        $columns: map-get($menu-dropdown-columns, $breakpoint);
+                        
+                        $padding-map:     directional-value-to-map( get-breakpoint-value($menu-dropdown-padding, $breakpoint) );
+                        $padding-right:   map-get($padding-map, right);
+                        $padding-left:    map-get($padding-map, left);
+
+                        $col-padding-x:   get-breakpoint-value($menu-dropdown-col-padding-x, $breakpoint);
+
+                        @include media-breakpoint-up($breakpoint) {
+                            width: decimal-floor(($menu-width - ($menu-dropdown-border-width * 2) - ($padding-right + $padding-left - ($col-padding-x * 2))) / $columns, 1);
+                        }
+                    }
+                }
+                @else {
+                    @include css-declaration((
+                        'min-width': $menu-dropdown-dynamic-column-width-min,
+                        'max-width': $menu-dropdown-dynamic-column-width-max
+                    ));
+                }
+            }
+        }
+    }
+}

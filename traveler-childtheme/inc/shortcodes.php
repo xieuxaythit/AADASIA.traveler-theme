@@ -1,4 +1,7 @@
 <?php
+    // Note: If an error occurs because of missing function "st_reg_shortcode", 
+    // check if plugin Traveler-code is up to date and active
+
     function st_location_list_tour_func($attr) {
         global $st_search_args;
         $data = shortcode_atts(
@@ -38,7 +41,9 @@
                 $return .= st()->load_template('tours/elements/loop/loop-1', null, array('tour_id' => get_the_ID()));
             } else {
                 //$return .= st()->load_template('tours/elements/loop/loop-2', null, array('tour_id' => get_the_ID()));
-                $return .= st()->load_template('layouts/modern/tour/elements/loop/grid', '');
+
+                // Load grid template from chidtheme "traveler-childtheme/st_templates/layouts/tour-grid.php"
+                $return .= st()->load_template('layouts/tour-grid', ''); 
             }
         }
         $tour->remove_alter_search_query();
@@ -54,4 +59,11 @@
     }
 
     st_reg_shortcode('st_location_list_tour', 'st_location_list_tour_func');
+
+
+    //Best seller program
+    function st_best_seller_ft($attr, $content = null) {
+        return st()->load_template('layouts/best-seller', '', array('attr' => $attr));
+    }
+    st_reg_shortcode('st_best_seller', 'st_best_seller_ft');
 ?>

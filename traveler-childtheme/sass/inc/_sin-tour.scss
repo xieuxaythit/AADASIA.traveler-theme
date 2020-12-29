@@ -2,6 +2,11 @@
     background-color: $color__turquoise;
 }
 
+.tour-slider-wrapper {
+    position: relative;
+    z-index: 999;
+}
+
 #st-content-wrapper {
     &.st-single-tour {
         &,
@@ -23,6 +28,17 @@
             }
         }
 
+        .st-tour-feature {
+            .row {
+                display: flex;
+                justify-content: space-between;
+                
+                > div:last-child {
+                    display: none;
+                }
+            }
+        }
+
         .st-list-tour-related {
             .item {
                 border-radius: $base__border-radius;
@@ -30,20 +46,58 @@
             }
         }
 
-        .st-program 
-            {
-                .st-program-list {
-                    .item {
-                        @each $key in map-keys($tour-program-left-border-color) {
-                            &:nth-child(#{$key}) {
-                                border-left-color: map-get($tour-program-left-border-color, $key);
-                            }
+        .st-program {
+            .st-program-list {
+                .item {
+                    @each $key in map-keys($tour-program-left-border-color) {
+                        &:nth-child(#{$key}) {
+                            border-left-color: map-get($tour-program-left-border-color, $key);
                         }
                     }
                 }
             }
+        }
     }
 
+    .tour-featured-image {
+        &.featured-image-background,
+        .st-gallery {
+            @include set-page-header-height();
+        }
+    }
+
+    .st-list-tour {
+        &-related {
+            .item {
+                .body {
+                    .st-link {
+                        br {
+                            display: none;
+                        }
+                    }
+                }
+
+                h4.title {
+                    font-size: $h3-font-size;
+                    min-height: 50px;
+                }
+            }
+            .st-flex {
+                &.space-between {
+                    @include media-breakpoint-up(md) {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        margin-top: $grid-gutter-width;
+
+                        > div {
+                            margin-bottom: $grid-gutter-width / 2;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     .form-book-wrapper {
         background-color: $color__cream;
         border-radius: $base__border-radius;
@@ -87,12 +141,12 @@
 
     .destination-item {
         @include set-default-destination-image-style {
-            filter: saturate(0.5);
+            //filter: saturate(0.5);
         }
 
         &:hover {
             @include set-default-destination-image-style {
-                filter: saturate(1);
+                //filter: saturate(1);
             }
         }
 
@@ -120,4 +174,42 @@
 
 .best-seller-swapper {
     margin-top: 0;
+
+    .st-best-seller {
+        &-text {
+            .best-seller-label {
+                color: $color__white;
+                font-size: $h4-font-size;
+                font-weight: $font-weight-semi-bold;
+                background-color: var(--orange-color, $orange-color);
+                text-transform: uppercase;
+                padding: .3rem 1.5rem;
+                border-radius: 16px;
+            }
+
+            .tour-title {
+                br {
+                    display: none;
+                }
+            }
+
+            .st-tour-link {
+                display: inline-block;
+                padding: 1rem 3rem;
+                font-size: $h4-font-size;
+                font-weight: $font-weight-semi-bold;
+                text-decoration: none;
+                border-radius: 5px;
+                transition: box-shadow .15s ease-in-out;
+
+                &:hover {
+                    box-shadow: 0 0 20px rgba($color__white,0.8);
+                }
+
+                .st-view-tour {
+                    
+                }
+            }
+        }
+    }
 }

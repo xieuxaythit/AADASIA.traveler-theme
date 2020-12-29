@@ -40,3 +40,27 @@
         }
     }
 }
+
+@mixin make-rounded-icon($icon-size, $icon-color: $color__white, $icon-bg: var(--logo-orange, $color-logo-orange)) {
+    font-size: $icon-size;
+    color: $icon-color;
+    background-color: $icon-bg;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2em;
+    padding: .5em;
+    border-radius: 50%;
+
+    @content;
+    
+}
+
+@mixin set-page-header-height($height-map: $page-header-default-height) {
+    @each $bp in map-keys($height-map) {
+        @include media-breakpoint-up($bp) {
+            height: map-get($height-map, $bp);
+        }
+    }
+}

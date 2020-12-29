@@ -1,0 +1,94 @@
+.footer {
+    &__email-subscription {
+        background-color: var(--light-grey-color, $light-grey-color);
+    }
+
+    &__content-wrapper {
+
+    }
+
+    &__logo {
+        &--container {
+
+        }
+
+        &--image {
+            img {
+                @each $bp in map-keys($logo-footer-width) {
+                    @include media-breakpoint-up($bp) {
+                        width: map-get($logo-footer-width, $bp);
+                    }
+                }
+            }
+        }
+    }
+
+    &__menu--header {
+        color: var(--logo-blue, $color-logo-blue);
+        font-weight: 700;
+        text-transform: uppercase;
+        padding-bottom: $grid-gutter-width / 2;
+
+        ~ .widget_nav_menu {
+            margin-bottom: $grid-gutter-width;
+        }
+    }
+
+    &__contact-info {
+        font-size: 16px;
+        color: var(--main-color, $main-color);
+
+        i {
+            &.fa, 
+            &.las {
+                @include make-rounded-icon(1.5rem);
+            }
+        }
+    }
+
+    &__social-icon {
+        i {
+            &.fa {
+                @include make-rounded-icon(2rem, $color__white, null);
+
+                @each $icon in map-keys($map: $social-icon-bg) {
+                    &.fa-#{$icon} {
+                        background-color: map-get($map: $social-icon-bg, $key: $icon);
+                    }
+                }
+
+                // &:not(:last-child) {
+                //     margin-right: $grid-gutter-width;
+                // }
+            }
+        }
+
+        a {
+            &.social-icon {
+                display: inline-block;
+                font-size: $h3-font-size;
+
+                &:not(:last-child) {
+                    margin-right: 2rem;
+                    
+                    i {
+                        margin-right: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#main-footer {
+    .menu {
+        li {
+            &,
+            &.menu-item {
+                a {
+                    margin-bottom: $grid-gutter-width / 2;
+                }
+            }
+        }
+    }
+}

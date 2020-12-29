@@ -1,0 +1,74 @@
+//
+// Utilities - Grid
+//
+
+
+// Columns per row
+// Example: .row-cpr-lg-4 (4 columns per row in large and up)
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+	$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+	@include media-breakpoint-up($breakpoint, $grid-breakpoints) {
+		
+		@for $i from 1 through $grid-columns {
+			.row-cpr#{$infix}-#{$i} {
+				> .col,
+				> [class*="col-"] {
+					@include width-by-cpr($i);
+				}
+			}
+			
+			.col-cpr#{$infix}-#{$i} {
+				@include width-by-cpr($i);
+			}
+		}
+	}
+}
+
+
+// Remove horizontal gutter
+// Example: .remove-gutter-sm-down (remove gutter on `sm` and down)
+// .zero-gutter: inherit form old mobile block
+
+.zero-gutter,
+.remove-gutter {
+	@each $breakpoint in map-keys($grid-breakpoints-original) {
+		&-#{$breakpoint} {
+			$gutter: 0;
+			@each $bp in map-keys(mapReverse($grid-breakpoints-original)) {
+				$new-gutter: 0;
+				
+				@each $bp-size in $breakpoint-sizes {
+					@if map-get($container-gutter-widths, $bp-size) and map-get($grid-breakpoints-original, $breakpoint) >= map-get($grid-breakpoints-original, $bp-size) and map-get($grid-breakpoints-original, $bp) >= map-get($grid-breakpoints-original, $bp-size) {
+						$new-gutter: map-get($container-gutter-widths, $bp-size);
+					}
+				}
+
+				@if $gutter != $new-gutter and $new-gutter > 0 {
+					$gutter: $new-gutter;
+					$breakpoint-name: $breakpoint;
+				
+					@if map-get($grid-breakpoints-original, $breakpoint) > map-get($grid-breakpoints-original, $bp) {
+						$breakpoint-name: $bp;
+					} @elseif map-get($grid-breakpoints, $breakpoint) {
+						@include media-breakpoint-only($breakpoint-name) {
+							margin-right: ($gutter / -2);
+							margin-left: ($gutter / -2);
+							overflow-x: hidden;
+						}
+					}
+					
+					@include media-breakpoint-down($breakpoint-name) {
+						&-down {
+							margin-right: ($gutter / -2);
+							margin-left: ($gutter / -2);
+							overflow-x: hidden;
+						}
+					}
+					
+				}
+			}
+		}
+	}
+}

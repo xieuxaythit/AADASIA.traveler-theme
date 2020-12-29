@@ -11,6 +11,9 @@
 		},
 		{
 			"path": "traveler-childtheme"
+		},
+		{
+			"path": "../../Test sites/traveler.local/app/public/wp-content/plugins/traveler-code"
 		}
 	],
 	"settings": {}

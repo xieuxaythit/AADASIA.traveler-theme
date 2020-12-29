@@ -1,0 +1,56 @@
+// Mixin - Forms
+
+@mixin form-group-grid--vertical() {
+	.form-group-grid__label {
+        flex-basis: 100%;
+
+        &:empty {
+            display: none;
+        }
+    }
+
+    &:not(.form-group-grid--compact) {
+        .form-group-grid__controls,
+        .form-group-grid__val:not(.form-group-grid__val--icon-only) {
+            max-width: none;
+            flex-basis: 100%;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+    }
+
+    .form-control {
+        flex-grow: 1;
+        width: 7rem;
+    }
+}
+
+@mixin input-placeholder-color($color) {
+    &::placeholder {
+        color: $color;
+    } 
+
+    //dont combine these (compiled file not work in Edge/IE)
+    &::-ms-input-placeholder {
+        color: $color;
+    }
+}
+
+@mixin custom-checkbox-radio-square($default-color: $body-bg, $active-color: $brand-primary) {
+    .custom-label {
+        background-color: $default-color;
+        border-radius: 0;
+    }
+
+    input.form-checkbox:checked {
+        +.custom-label {
+            background-color: $active-color;
+            border: 1px solid darken($active-color, 5%);
+        }
+
+        +.custom-label:after {
+            content: initial;
+            display: none; //IE
+        }
+    }
+}

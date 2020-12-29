@@ -4,7 +4,7 @@ extract(shortcode_atts(array(
     'id' => '',
     'link' => '',
 ), $attr));
-//$st_link = vc_build_link($link);
+$st_link = vc_build_link($link);
 $args = [
     'post_type' => 'st_tours',
     'posts_per_page' => 1,
@@ -29,17 +29,17 @@ if ($query->have_posts()) {
             ?>
             <div class="thumb col-sm-6 col-sm-push-6 ">
                <div class="item">
-                   <a href="<?php echo esc_url(get_the_permalink()); ?>" style="background-image: <?php wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); ?>">
-                       
+                   <a href="<?php echo esc_url(get_the_permalink()); ?>">
+                       <?php the_post_thumbnail(); ?>
                    </a>
                </div>
             </div>
         <?php }
         ?>
         <div class="st-best-seller-text col-sm-6 col-sm-pull-6  ">
-            <button class="best-seller-text btn btn-primary"><?php echo esc_html($best_seller) ?></button>
+            <label class="best-seller-label"><?php echo esc_html($best_seller) ?></label>
             <h2 class="tour-title"><?php echo get_the_title()?></h2>
-            <p class="tour-description"><?php echo esc_html(wp_trim_words(get_the_excerpt(),12)); ?></p>
+            <p class="tour-description"><?php echo esc_html(wp_trim_words(get_the_excerpt(),50)); ?></p>
             <p class="price">
                 <span>
                         <?php echo TravelHelper::getNewIcon('thunder', '#ffab53', '10px', '16px'); ?>
@@ -52,7 +52,7 @@ if ($query->have_posts()) {
                 <span><?php echo esc_html__('/person',ST_TEXTDOMAIN) ?></span>
 
             </p>
-            <a class="st-tour-link" href="<?php echo esc_url($st_link['url']) ?>"><button class="st-view-tour btn btn-default"><?php echo esc_html__('View Detail',ST_TEXTDOMAIN)  ?></button></a>
+            <a class="st-tour-link" href="<?php echo esc_url($st_link['url']) ?>"><?php echo esc_html__('View Detail',ST_TEXTDOMAIN)  ?></a>
 
         </div>
 

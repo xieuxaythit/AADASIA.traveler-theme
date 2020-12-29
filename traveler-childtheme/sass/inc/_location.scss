@@ -1,19 +1,22 @@
 .single {
     &.single-location {
         .sts-banner {
-            background-position: center center;
-
+            
             .container {
                 display: flex;
                 height: 100%;
             }
 
             @at-root body#{&} {
+                background-position: center center;
+                @include set-page-header-height();
+
                 h1 {
                     position: static;
                     top: unset;
                     transform: translateY(-40%);
                     align-self: flex-end;
+                    font-family: inherit;
                     padding: 10px 50px;
                     border-radius: $base__border-radius;
                     background-color: var(--form-head-color, #{$form-head-color});
@@ -23,8 +26,28 @@
     }
 }
 
-.location-description {
-    font-size: 18px;
+.location-content {
+    &__description {
+        //font-size: 18px;
+    }
+
+    &__gallery {
+        .st-aboutus-gallery {
+            .st-gallery {
+                .item {
+                    @each $bp in map-keys($map: $destination-gallery-height) {
+                        @include media-breakpoint-up($bp) {
+                            height: map-get($map: $destination-gallery-height, $key: $bp) !important;
+                        }
+                    }
+                }
+
+                .slogan {
+                    display: none;
+                }
+            }
+        }
+    }
 }
 
 .search-result-page {
@@ -33,6 +56,19 @@
         .grid-item {
             .service-border {
                 @include set-border-default(true);
+            }
+        }
+    }
+
+    .st-hotel-result,
+    .st-rental-result {
+        .item-service {
+            h4.service-title {
+                a {
+                    br {
+                        display: none;
+                    }
+                }
             }
         }
     }

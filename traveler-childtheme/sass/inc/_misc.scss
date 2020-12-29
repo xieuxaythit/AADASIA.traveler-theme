@@ -1,0 +1,79 @@
+.landing-page {
+    &__header {
+        padding: 150px 0;
+
+        h1, h2, h3, h4, h5, span {
+            color: $color__white;
+        }
+        
+        h1, h2, h3 {
+            text-transform: uppercase;
+        }
+    }
+
+    &__section {
+        &--title {
+            color: var(--link-color, $link-color);
+            margin-bottom: $grid-gutter-width * 1.5;
+        }
+
+        &--content {
+            color: inherit;
+            line-height: 1.5;
+
+            p, span, ul, li {
+                font-size: $h3-font-size;
+            }
+        }
+    }
+}
+
+// opacity
+// @for $i from .5 through 1 {
+//     $value: $i + .05;
+// }
+
+@each $color in map-keys($map: $color-text) {
+    .#{$color} {
+        color: map-get($map: $color-text, $key: $color);
+    }
+}
+
+.no-margin {
+    h1, h2, h3, h4, h5,
+    .h1, .h2, .h3, .h4, .h5 {
+        margin: 0 0 0 0;
+    }
+}
+
+.location,
+.service {
+    &-description {
+        font-size: $h4-font-size;
+    }
+}
+
+.st-aboutus-title {
+    font-size: 24px;
+    color: var(--link-color, $link-color);
+    margin-bottom: 20px !important;
+}
+
+.st-aboutus-content {
+    font-size: 16px;
+    color: #768092;
+    line-height: 24px;
+}
+
+
+.st-list-statistic {
+    .row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .item {
+        min-height: 200px;
+    }
+}

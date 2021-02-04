@@ -66,4 +66,21 @@
         return st()->load_template('layouts/best-seller', '', array('attr' => $attr));
     }
     st_reg_shortcode('st_best_seller', 'st_best_seller_ft');
+
+    // List of services modified 
+    function st_list_of_services_new($attr, $content = false) {
+        $attr = shortcode_atts([
+            'service' => 'st_hotel',
+            'ids' => '',
+            'posts_per_page' => 8,
+            'style' => 'style1',
+            'title' => '',
+            'description' => '',
+                ], $attr);
+        //return st()->load_template('layouts/modern/elements/list_of_service', '', $attr);
+
+        // Load grid template from chidtheme "traveler-childtheme/st_templates/layouts/list-of-service.php"
+        return st()->load_template('layouts/list-of-service', '', $attr);
+    }
+    st_reg_shortcode('st_list_of_services_new', 'st_list_of_services_new');
 ?>

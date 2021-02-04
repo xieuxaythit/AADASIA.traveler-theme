@@ -57,6 +57,14 @@
             .service-border {
                 @include set-border-default(true);
             }
+            .thumb {
+                .service-avatar {
+                    &,
+                    a#{&} {
+                        display: block;
+                    }
+                }
+            }
         }
     }
 

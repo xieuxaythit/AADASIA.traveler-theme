@@ -324,6 +324,12 @@ body.single.single-location .sts-banner h1 {
 	border-radius: 15px;
 }
 
+.search-result-page .grid-item .thumb .service-avatar,
+.search-result-page .grid-item .thumb .service-avatar a.search-result-page .grid-item .thumb .service-avatar, .search-result-page .grid-item .thumb .service-avatar .search-result-page.st-tours .grid-item .thumb .service-avatar, .search-result-page.st-tours .grid-item .thumb .service-avatar,
+.search-result-page.st-tours .grid-item .thumb .service-avatar a.search-result-page .grid-item .thumb .service-avatar, .search-result-page.st-tours .grid-item .thumb .service-avatar .search-result-page.st-tours .grid-item .thumb .service-avatar {
+	display: block;
+}
+
 .search-result-page .st-hotel-result .item-service h4.service-title a br,
 .search-result-page .st-rental-result .item-service h4.service-title a br {
 	display: none;

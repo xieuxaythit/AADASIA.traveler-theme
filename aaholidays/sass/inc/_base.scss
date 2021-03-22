@@ -1,0 +1,91 @@
+:root {
+    --main-color: #{$main-color};
+    --link-color: #{$link-color};
+    --link-color-dark: #{$link-color-dark};
+	--grey-color: #{$grey-color};
+	--light-grey-color: #{$light-grey-color};
+    --orange-color: #{$orange-color};
+    --cyan-color: #{$color__turquoise};
+    --form-head-color: #{$form-head-color};
+    --dunhill-red-color: #{$color__dunhill-red};
+    --midnight-blue-color: #{$color__mnblue};
+    --logo-red: #{$color-logo-red};
+    --logo-yellow: #{$color-logo-yellow};
+    --logo-orange: #{$color-logo-orange};
+    --logo-green: #{$color-logo-green};
+    --logo-blue: #{$color-logo-blue};
+}
+
+a,
+input,
+button,
+select,
+textarea {
+    outline: none;
+}
+
+.btn {
+    &.btn-green {
+        &:hover {
+            background-color: var(--orange-color, #{$color__orange});
+        }
+    }
+}
+
+g#ico_card #Group {
+    stroke: var(--grey-color, #{$grey-color});
+}
+
+.bg__color {
+    a.st-tour-link {
+        background-color: $color__white !important;
+    }
+}
+
+@each $bgc in map-keys($color-backgrounds) {
+    .bg__#{$bgc} {
+        &, * {
+            background-color: map-get($color-backgrounds, $bgc);
+        }
+
+        a.st-tour-link {
+            color: map-get($color-backgrounds, $bgc) !important;
+        }
+    }
+}
+
+%search-form-fields-unset-width {
+    width: unset;
+}
+
+%search-form-fields-no-border-mobile {
+    @media (max-width: 991px) {
+        border-right: none;
+    }
+}
+
+%default-page-text-color {
+    color: var(--main-color, #{$main-color});
+    //color: var(---form-head-color, #{$form-head-color});
+}
+
+%default-form-head {
+    background-color: var(--form-head-color, #{$color__turquoise});
+}
+
+%default-booking-price-color {
+    color: $color__white !important;
+}
+
+
+// fix admin bar after login 
+
+html {
+    #wpadminbar {
+        @each $bp in map-keys($map: $admin-bar-pos) {
+            @include media-breakpoint-down($bp, $grid-secondary) {
+                top: map-get($map: $admin-bar-pos, $key: $bp);
+            }
+        }
+    }
+}

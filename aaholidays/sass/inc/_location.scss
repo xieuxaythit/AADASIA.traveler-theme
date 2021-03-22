@@ -1,0 +1,160 @@
+.single {
+    &.single-location {
+        .sts-banner {
+            
+            .container {
+                display: flex;
+                height: 100%;
+            }
+
+            @at-root body#{&} {
+                background-position: center center;
+                @include set-page-header-height();
+
+                h1 {
+                    position: static;
+                    top: unset;
+                    transform: translateY(-40%);
+                    align-self: flex-end;
+                    font-family: inherit;
+                    padding: 10px 50px;
+                    border-radius: $base__border-radius;
+                    background-color: var(--form-head-color, #{$form-head-color});
+                }
+            }
+        }
+    }
+}
+
+.location-content {
+    &__description {
+        //font-size: 18px;
+    }
+
+    &__gallery {
+        .st-aboutus-gallery {
+            .st-gallery {
+                .item {
+                    // @each $bp in map-keys($map: $destination-gallery-height) {
+                    //     @include media-breakpoint-up($bp) {
+                    //         height: map-get($map: $destination-gallery-height, $key: $bp) !important;
+                    //     }
+                    // }
+
+                    &__lightbox {
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+
+                .slogan {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+#st-content-wrapper {
+    .st-flickity {
+        .carousel {
+            .item {
+                @each $bp in map-keys($map: $destination-gallery-size) {
+                    $size: map-get($map: $destination-gallery-size, $key: $bp);
+                    @include media-breakpoint-up($bp) {
+                        @each $prop in map-keys($map: $size) {
+                            #{$prop}: map-get($map: $size, $key: $prop) !important;
+                        }
+                    }
+                }
+            }
+
+            &.is-fullscreen {
+                .flickity-slider {
+                    display: flex;
+                    align-items: center;
+                }
+                
+                .item {
+                    height: 100% !important;
+                }
+            }
+        }
+
+        button:not(.flickity-prev-next-button) {
+            .flickity-button-icon {
+                display: block;
+            }
+        }
+    }
+}
+
+.flickity-button {
+    &,
+    &:hover {
+        color: #fff;
+        background-color: rgba(21, 68, 148, 0.6);
+    }
+}
+
+.flickity-button-icon {
+    @at-root .flickity-fullscreen-button & {
+        width: 30px;
+        height: 30px;
+        left: auto;
+        right: 4px;
+        top: 4px;
+    }
+
+    // @at-root .flickity-prev-next-button & {
+    //     display: none;
+    // }
+}
+
+.flickity-fullscreen-button {
+    width: 38px;
+    height: 38px;
+    background-color: rgba(26, 43, 72, 0.6);
+}
+
+.flickity-enabled {
+    &.is-fullscreen {
+        z-index: 999;
+        .flickity-fullscreen-button-exit {
+            top: 40px;
+        }
+    }
+}
+
+.search-result-page {
+    &,
+    &.st-tours {
+        .grid-item {
+            .service-border {
+                @include set-border-default(true);
+            }
+            .thumb {
+                .service-avatar {
+                    &,
+                    a#{&} {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+
+    .st-hotel-result,
+    .st-rental-result {
+        .item-service {
+            h4.service-title {
+                a {
+                    br {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}

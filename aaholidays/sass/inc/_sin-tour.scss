@@ -1,0 +1,248 @@
+.st-list-features {
+    background-color: $color__turquoise;
+
+    @include media-breakpoint-down(xs) {
+        padding-top: 280px;
+    }
+}
+
+.tour-slider-wrapper {
+    position: relative;
+    z-index: 999;
+
+    .st-search-form-tour {
+        @include media-breakpoint-down(sm) {
+            transform: translateY(-15%);
+        }
+    }
+}
+
+#st-content-wrapper {
+    &.st-single-tour {
+        &,
+        &.st-single-tour-new {
+            .widgets {
+                @include set-default-booking-form;
+            }
+
+            @include set-default-booking-form {
+                .tour-sale-box {
+                    top: 0;
+                    right: 0;
+
+                    .st_sale_class {
+                        top: -10px;
+                        background-color: var(--orange-color, #{$orange-color});
+                    }
+                }
+            }
+        }
+
+        .st-hotel-header {
+            .left {
+                flex: 1 1 80%;
+            }
+        }
+
+        .st-tour-feature {
+            .row {
+                display: flex;
+                justify-content: space-between;
+                
+                > div:last-child {
+                    display: none;
+                }
+            }
+        }
+
+        .st-list-tour-related {
+            .item {
+                border-radius: $base__border-radius;
+                overflow: hidden;
+            }
+        }
+
+        .st-program {
+            .st-program-list {
+                .item {
+                    @each $key in map-keys($tour-program-left-border-color) {
+                        &:nth-child(#{$key}) {
+                            border-left-color: map-get($tour-program-left-border-color, $key);
+                        }
+                    }
+
+                    .header {
+                        h5 {
+                            color: var(--midnight-blue-color, $color__mnblue);
+                            font-weight: $font-weight-bold;
+                        }
+                    }
+                }
+            }
+        }
+
+        .st-include {
+            .include,
+            .exclude {
+                li {
+                    color: var(--midnight-blue-color, $color__mnblue);
+                    font-weight: $font-weight-medium;
+                }
+            }
+        }
+    }
+
+    .tour-featured-image {
+        &.featured-image-background,
+        .st-gallery {
+            @include set-page-header-height();
+        }
+    }
+
+    .st-list-tour {
+        &-related {
+            .item {
+                .body {
+                    .st-link {
+                        br {
+                            display: none;
+                        }
+                    }
+                }
+
+                h4.title {
+                    font-size: $h3-font-size;
+                    min-height: 50px;
+                }
+            }
+            .st-flex {
+                &.space-between {
+                    @include media-breakpoint-up(md) {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        margin-top: $grid-gutter-width;
+
+                        > div {
+                            margin-bottom: $grid-gutter-width / 2;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    .form-book-wrapper {
+        background-color: $color__cream;
+        border-radius: $base__border-radius;
+        border-width: 0;
+        border-color: transparent;
+        overflow: hidden;
+        box-shadow: 0 0 10px 0 rgba(0,0,0,.3);
+
+        .form-head {
+            //@extend %default-form-head;
+
+            .price {
+                .label,
+                .value .text-lg {
+                    @extend %default-booking-price-color;
+                }
+            }
+        }
+
+        .form-group {
+            border-top: none;
+            border-bottom: 1px solid $color__mistyblue;
+
+            &.form-guest-search {
+                border-bottom: none;
+
+                .guest-wrapper {
+                    border-bottom: 1px solid $color__mistyblue;
+                }
+            }
+        }
+
+        .submit-group {
+            border-top: 1px solid $color__mistyblue;
+        }
+
+        .st-sent-mail-customer {
+            background-color: $color__cream;
+        }
+    }
+
+    .destination-item {
+        @include set-default-destination-image-style {
+            //filter: saturate(0.5);
+        }
+
+        &:hover {
+            @include set-default-destination-image-style {
+                //filter: saturate(1);
+            }
+        }
+
+        .image {
+            .content {
+                .title {
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+
+    .hotel-target-book-mobile {
+        border: none;
+        @extend %default-form-head;
+
+        .price-wrapper {
+            &, 
+            .price {
+                @extend %default-booking-price-color;        
+            }
+        }
+    }
+}
+
+.best-seller-swapper {
+    margin-top: 0;
+
+    .st-best-seller {
+        &-text {
+            .best-seller-label {
+                color: $color__white;
+                font-size: $h4-font-size;
+                font-weight: $font-weight-semi-bold;
+                background-color: var(--orange-color, $orange-color);
+                text-transform: uppercase;
+                padding: .3rem 1.5rem;
+                border-radius: 16px;
+            }
+
+            .tour-title {
+                br {
+                    display: none;
+                }
+            }
+
+            .st-tour-link {
+                display: inline-block;
+                padding: 1rem 3rem;
+                font-size: $h4-font-size;
+                font-weight: $font-weight-semi-bold;
+                text-decoration: none;
+                border-radius: 5px;
+                transition: box-shadow .15s ease-in-out;
+
+                &:hover {
+                    box-shadow: 0 0 20px rgba($color__white,0.8);
+                }
+
+                .st-view-tour {
+                    
+                }
+            }
+        }
+    }
+}

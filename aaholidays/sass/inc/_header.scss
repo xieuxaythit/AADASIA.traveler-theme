@@ -1,0 +1,114 @@
+#header {
+
+    @include media-breakpoint-down(xs) {
+        &, 
+        .logged-in & {
+            position: relative;
+            z-index: 1000;
+        }
+    }
+
+    @include media-breakpoint-down(sm) {
+        .logged-in & {
+            margin-top: 0;
+        }
+    }
+
+    .header {
+        background-color: $color__white;
+        padding: 0 20px;
+
+        @include media-breakpoint-up(lg) {
+            padding: 0 50px;
+        }
+
+        @include media-breakpoint-down(sm) {
+            padding: 20px 35px;
+        }
+
+        @include media-breakpoint-down(xs) {
+            padding: 20px;
+        }
+
+        .header-left {
+            @include media-breakpoint-down(sm) {
+                float: none;
+                margin: 0 auto !important;
+
+                flex: 1 0 auto;
+                justify-content: center;
+
+                .logo {
+                    float: none;
+                    margin-right: 0;
+                    display: flex;
+                    justify-content: center;
+                    flex: 1 0 auto;
+                }
+            }
+
+            // @include media-breakpoint-down(xs) {
+            //     flex: 1 0 auto;
+            //     justify-content: center;
+
+            //     .logo {
+            //         float: none;
+            //         margin-right: 0;
+            //         display: flex;
+            //         justify-content: center;
+            //         flex: 1 0 auto;
+            //     }
+            // }
+
+            .logo {
+                img {
+                    min-width: 220px;
+                }
+            }
+            #st-main-menu {
+                .main-menu {
+                    > li {
+                        > a {
+                            @at-root .single &,
+                            .single-location &,
+                            & {
+                                @extend %default-page-text-color;
+                            }
+                        }
+
+                        &.menu-item-has-children {
+                            .fa {
+                                @at-root .single &,
+                                .single-location &,
+                                & {
+                                    @extend %default-page-text-color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        @at-root .single & {
+
+        }
+
+        @at-root & {
+            .logo {
+                img {
+                    max-height: $logo-max-height;
+                }
+            }
+        }
+    }
+
+    #topbar {
+        background: var(--logo-blue, #{$color-logo-blue});
+        padding: 15px 20px;
+
+        @include media-breakpoint-up(lg) {
+            padding: 15px 50px;
+        }
+    }
+}

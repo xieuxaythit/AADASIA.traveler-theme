@@ -1,0 +1,124 @@
+// General settings
+$grid-breakpoints: (
+  us: 0,
+  xs: 575px,
+  sm: 767px,
+  md: 991px,
+  lg: 1333px,
+  xl: 1746px
+);
+
+$grid-secondary: (
+  us: 0,
+  xs: 400px,
+  sm: 600px,
+  md: 782px
+);
+
+$admin-bar-pos: (xs: -46px);
+
+$base__opacity: .8;
+$base__border-radius: 15px;
+
+$logo-min-width: 220px;
+$logo-max-height: 68px;
+
+$logo-footer-width: (xs: 150px, md: 220px);
+
+// Colors
+
+$color__white: #ffffff;
+$color__black: #000000;
+$color__yellow: #fcd759;
+$color__orange: #ee6226;
+$color__orange-dark: #f97251;
+$color__brown: #9e471c;
+$color__brown-dark: #73431b;
+$color__green: #069347;
+$color__green-dark: #1e6d32;
+$color__green-light: #01b403;
+$color__dunhill-red: #870110;
+
+// Logo colors
+
+$color-logo-green: #069347;
+$color-logo-blue: #0f5393;
+$color-logo-red: #ed1f24;
+$color-logo-yellow: #ead124;
+$color-logo-orange: #f68622;
+
+
+$color__blue-gray:  #5d6c89;
+$color__turquoise:  #36d6e7;
+$color__tangerine:  #feb06a;
+$color__cream:      #fbf6f3;
+
+$color__darkblue:   #071330;
+$color__mnblue:     #0C4160;
+$color__mistyblue:  #e1e8ef;
+
+// Bamboo beach style
+
+$main-color:        $color__blue-gray;
+$link-color:        $color__orange;
+$link-color-dark:   $color__darkblue;
+$grey-color:        $color__mnblue;
+$light-grey-color:  $color__mistyblue;
+$orange-color:      $color__orange;
+$form-head-color:   $color__turquoise;
+
+$tour-program-left-border-color: (odd: $color__turquoise, even: $orange-color);
+
+$destination-gallery-height: (xs: 380px, sm: 500px, md: 800px);
+
+$destination-gallery-size: (
+  us: (width: 100%, height: 360px),
+  xs: (width: 100%, height: 380px), 
+  sm: (width: 100%, height: 500px), 
+  md: (width: 75%, height: 600px)
+);
+
+$page-header-default-height: (md: 680px);
+
+$color-backgrounds: (
+                        turquoise: $color__turquoise, 
+                        orange: $color__orange, 
+                        green: $color__green,
+                        yellow: $color__yellow,
+                        brown: $color__brown,
+                        blue-gray: $color__blue-gray, 
+                        dark-blue: $color__darkblue, 
+                        misty-blue: $color__mistyblue
+                    );
+
+$color-text:        (
+                        red: $color__dunhill-red,
+                        white: $color__white
+                    );
+
+$search-fields-mapping: (
+                          date: "form-date-search-new", 
+                          destination: "field-detination", 
+                          type: "field-tour-type", 
+                          guest: "field-guest-new", 
+                          price: "st-price-field", 
+                          duration: "field-durations"
+                        );
+
+$social-icon-bg:  (
+                    facebook: var(--logo-blue, $color-logo-blue),
+                    instagram: var(--logo-red, $color-logo-red)
+                  );
+
+$color__input-background: #fff !default;
+$color__input-border: #fff !default;
+$color__input-icon: #aaa !default;
+$color__input-text: #232323 !default;
+$color__input-button: $color__yellow !default;
+$color__font-icon: $color__green_light !default;
+$color__paging-background: $color__yellow !default;
+
+// e:Bamboo beach style
+
+$font-weight-medium:        500;
+$font-weight-semi-bold:     600;

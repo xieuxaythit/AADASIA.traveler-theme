@@ -105,4 +105,10 @@
         return st()->load_template('layouts/gallery', 'carousel', array('attr' => $attr));
     }
     st_reg_shortcode('alh_gallery_carousel', 'alh_gallery_carousel');
+
+    // ALH Tour Search Form (Customized module)
+    function alh_tour_search_form($attr, $content = null) {
+        return st()->load_template('layouts/tour-search-form', '', array('attr' => $attr));
+    }
+    st_reg_shortcode('alh_tour_search_form', 'alh_tour_search_form');
 ?>

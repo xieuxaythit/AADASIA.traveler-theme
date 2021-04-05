@@ -6,6 +6,7 @@ Template:       traveler
 
 (optional values you can add: Theme URI, Author URI, Version)
 */
+@import "inc/variable";
 
 @import "mixins/mathsass/math";
 @import "mixins/functions";
@@ -20,12 +21,10 @@ Template:       traveler
 @import "mixins/css-declaration";
 @import "mixins/icons";
 @import "mixins/color";
+@import "mixins/utils";
 
 @import "bootstrap/4.3.1/scss/bootstrap.scss";
 
-@import "inc/mixins/utils";
-
-@import "inc/variable";
 @import "inc/base";
 @import "inc/breadcrumbs";
 @import "inc/header";

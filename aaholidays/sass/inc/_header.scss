@@ -1,14 +1,16 @@
 #header {
 
     @include media-breakpoint-down(xs) {
+        
+    }
+
+    @include media-breakpoint-down(sm) {
         &, 
         .logged-in & {
             position: relative;
             z-index: 1000;
         }
-    }
 
-    @include media-breakpoint-down(sm) {
         .logged-in & {
             margin-top: 0;
         }
@@ -16,19 +18,7 @@
 
     .header {
         background-color: $color__white;
-        padding: 0 20px;
-
-        @include media-breakpoint-up(lg) {
-            padding: 0 50px;
-        }
-
-        @include media-breakpoint-down(sm) {
-            padding: 20px 35px;
-        }
-
-        @include media-breakpoint-down(xs) {
-            padding: 20px;
-        }
+        @include css-declaration(('padding': $header-padding));
 
         .header-left {
             @include media-breakpoint-down(sm) {
@@ -62,13 +52,17 @@
 
             .logo {
                 img {
-                    min-width: 220px;
+                    min-width: $logo-min-width;
                 }
             }
             #st-main-menu {
+                @include css-declaration(('padding': $topmenu-container-padding));
+
                 .main-menu {
                     > li {
                         > a {
+                            @include css-declaration(('padding': $topmenu-item-paddings));
+
                             @at-root .single &,
                             .single-location &,
                             & {
@@ -78,6 +72,19 @@
 
                         &.menu-item-has-children {
                             .fa {
+                                margin-top: 0 !important;
+                                height: 20px;
+                                top: 50%; 
+                                transform: translateY(-50%);
+
+                                @include media-breakpoint-down(sm) {
+                                    top: 0 !important;
+                                    height: 22px;
+                                    padding: 18px 0;
+                                    margin-top: 0 !important;
+                                    transform: none;
+                                }
+
                                 @at-root .single &,
                                 .single-location &,
                                 & {

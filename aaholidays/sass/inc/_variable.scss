@@ -14,13 +14,28 @@ $grid-secondary: (
   sm: 600px,
   md: 782px
 );
+$devices: ();
+
+$devices: map-merge((
+  mobile: false,
+  desktop: false
+), $devices);
+
+$breakpoint-sizes-mobile: ("us","xs", "sm", "md", "lg", "xl");
+$breakpoint-sizes-desktop: ("us","xs", "sm", "md", "lg", "xl");
+
+@if device(mobile) {
+  $breakpoint-sizes: $breakpoint-sizes-mobile !global;
+} @elseif device(desktop) {
+  $breakpoint-sizes: $breakpoint-sizes-desktop !global;
+}
 
 $admin-bar-pos: (xs: -46px);
 
 $base__opacity: .8;
 $base__border-radius: 15px;
 
-$logo-min-width: 220px;
+$logo-min-width: 150px;
 $logo-max-height: 68px;
 
 $logo-footer-width: (xs: 150px, md: 220px);
@@ -76,6 +91,23 @@ $destination-gallery-size: (
   xs: (width: 100%, height: 380px), 
   sm: (width: 100%, height: 500px), 
   md: (width: 75%, height: 600px)
+);
+
+$header-padding: (
+  xs: 15px 20px,
+  sm: 15px 20px,
+  md: 0 20px,
+  lg: 0 50px
+);
+
+$topmenu-container-padding: (
+  md: 25px 0,
+  lg: 20px 0
+);
+
+$topmenu-item-paddings: (
+  md: 10px 20px 10px 10px,
+  lg: 10px 25px 10px 15px
 );
 
 $page-header-default-height: (md: 680px);

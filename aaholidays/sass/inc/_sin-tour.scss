@@ -36,6 +36,35 @@
                     }
                 }
             }
+
+            .fixed-on-mobile {
+                @include media-breakpoint-up(md) {
+                    position: static !important;
+                }
+            }
+
+            h4 {
+                &.title-enquiry-form {
+                    line-height: 1.4;
+
+                    a {
+                        color: var(--dunhill-red-color, #{$color__dunhill-red});
+                        font-weight: $font-weight-bold;
+                    }
+                }
+            }
+
+            .hbspt-form {
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+
+                .hs-form-iframe {
+                    width: $inquiry-form-max-width !important;
+                    max-height: $inquiry-form-max-height !important;
+                    padding-bottom: 20px;
+                }
+            }
         }
 
         .st-hotel-header {
@@ -64,17 +93,36 @@
 
         .st-program {
             .st-program-list {
-                .item {
-                    @each $key in map-keys($tour-program-left-border-color) {
-                        &:nth-child(#{$key}) {
-                            border-left-color: map-get($tour-program-left-border-color, $key);
+                &.style {
+                    &1 {
+                        .item {
+                            @each $key in map-keys($tour-program-left-border-color) {
+                                &:nth-child(#{$key}) {
+                                    border-left-color: map-get($tour-program-left-border-color, $key);
+                                }
+                            }
+        
+                            .header {
+                                h5 {
+                                    color: var(--midnight-blue-color, $color__mnblue);
+                                    font-weight: $font-weight-bold;
+                                }
+                            }
                         }
                     }
+                    &2 {
 
-                    .header {
-                        h5 {
-                            color: var(--midnight-blue-color, $color__mnblue);
-                            font-weight: $font-weight-bold;
+                    }
+
+                    &3 {
+                        .item {
+                            border-radius: 0;
+
+                            h5 {
+                                color: var(--dunhill-red-color, #{$color__dunhill-red});
+                                font-size: 20px;
+                                font-weight: $font-weight-bold;
+                            }
                         }
                     }
                 }

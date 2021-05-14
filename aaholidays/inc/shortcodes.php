@@ -70,7 +70,7 @@
     // List of services modified 
     function st_list_of_services_new($attr, $content = false) {
         $attr = shortcode_atts([
-            'service' => 'st_hotel',
+            'service' => 'st_tours',
             'ids' => '',
             'posts_per_page' => 8,
             'style' => 'style1',

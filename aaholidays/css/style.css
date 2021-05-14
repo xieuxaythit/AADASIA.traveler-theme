@@ -642,6 +642,33 @@ body.single.single-location .sts-banner h1 {
 	background-color: var(--orange-color, #ee6226);
 }
 
+@media (min-width: 991px) {
+	#st-content-wrapper.st-single-tour .fixed-on-mobile, #st-content-wrapper.st-single-tour.st-single-tour-new .fixed-on-mobile {
+		position: static !important;
+	}
+}
+
+#st-content-wrapper.st-single-tour h4.title-enquiry-form, #st-content-wrapper.st-single-tour.st-single-tour-new h4.title-enquiry-form {
+	line-height: 1.4;
+}
+
+#st-content-wrapper.st-single-tour h4.title-enquiry-form a, #st-content-wrapper.st-single-tour.st-single-tour-new h4.title-enquiry-form a {
+	color: var(--dunhill-red-color, #870110);
+	font-weight: 700;
+}
+
+#st-content-wrapper.st-single-tour .hbspt-form, #st-content-wrapper.st-single-tour.st-single-tour-new .hbspt-form {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+#st-content-wrapper.st-single-tour .hbspt-form .hs-form-iframe, #st-content-wrapper.st-single-tour.st-single-tour-new .hbspt-form .hs-form-iframe {
+	width: 85% !important;
+	max-height: 690px !important;
+	padding-bottom: 20px;
+}
+
 #st-content-wrapper.st-single-tour .st-hotel-header .left {
 	flex: 1 1 80%;
 }
@@ -660,16 +687,26 @@ body.single.single-location .sts-banner h1 {
 	overflow: hidden;
 }
 
-#st-content-wrapper.st-single-tour .st-program .st-program-list .item:nth-child(odd) {
+#st-content-wrapper.st-single-tour .st-program .st-program-list.style1 .item:nth-child(odd) {
 	border-left-color: #36d6e7;
 }
 
-#st-content-wrapper.st-single-tour .st-program .st-program-list .item:nth-child(even) {
+#st-content-wrapper.st-single-tour .st-program .st-program-list.style1 .item:nth-child(even) {
 	border-left-color: #ee6226;
 }
 
-#st-content-wrapper.st-single-tour .st-program .st-program-list .item .header h5 {
+#st-content-wrapper.st-single-tour .st-program .st-program-list.style1 .item .header h5 {
 	color: var(--midnight-blue-color, #0C4160);
+	font-weight: 700;
+}
+
+#st-content-wrapper.st-single-tour .st-program .st-program-list.style3 .item {
+	border-radius: 0;
+}
+
+#st-content-wrapper.st-single-tour .st-program .st-program-list.style3 .item h5 {
+	color: var(--dunhill-red-color, #870110);
+	font-size: 20px;
 	font-weight: 700;
 }
 
